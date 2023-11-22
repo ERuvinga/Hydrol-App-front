@@ -16,14 +16,14 @@ const LoadingPage = () =>{
 
 const MainLeadingPage = ()=>{
     return(
-        <section className={`${style.ContainerLeadingPage}`}>
+        <section className={`${style.ContainerLeadingPage}` }>
             <img alt="Manage Illustration" className={`${style.LeadingIllustrat}`} src={"/img/home.png"}/>
             <div className={`${style.Description}`}>
                 <h1  className={`${style.HeadDescr}`}>Meilleure platforme de gestion d`eau</h1>
                 <p  className={`${style.paragDescr}`}>connectez-vous à votre compte pour gérer et visualiser toutes vos données personnelles ( Litres utilisés, factures, etc.).</p>
                 <div className={`${style.AllBtns}`}>
-                    <Link className={`${style.BtnHome}`} href={"/home/"}>Connexion</Link>
-                    <Link className={`${style.BtnLogin}`} href={"/Login"}>Next</Link>
+                    <Link className={`${style.BtnHome}`} href={"/home"}>Suivant</Link>
+                    <Link className={`${style.BtnLogin}`} href={"/Login"}>Connexion</Link>
                 </div>
             </div>
         </section>

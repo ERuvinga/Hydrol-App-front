@@ -5,11 +5,11 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
 
-  const [preloadingState, setPreloadingState] = useState(false);
+  const [preloadingState, setPreloadingState] = useState(true);
   useEffect(()=>{
-      // setTimeout(()=>{
-      //   setPreloadingState(false);
-      // },5000)
+      setTimeout(()=>{
+        setPreloadingState(false);
+      },5000)
   },[])
 
   return (
