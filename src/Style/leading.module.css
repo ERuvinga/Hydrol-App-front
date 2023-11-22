@@ -1,0 +1,19 @@
+.main{
+    background-color: #3FBDF1;
+
+    font-family: monoBold;
+    font-size: 1.5em;
+
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.description{
+    color: white;
+}

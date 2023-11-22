@@ -1,0 +1,68 @@
+@keyframes rotateit{
+    from{
+        transform: rotate(360deg);
+    }
+    to{
+        transform: rotate(0deg);
+    }
+}
+
+.spiner{
+    width: 100px;
+    height: 100px;
+    position: relative;
+
+    /*animation*/
+    animation: rotateit 1.2s linear infinite;
+}
+
+.spiner.circles div{
+    width: 10px;
+    height: 20px;
+    background-color: white;
+    position: absolute;
+    border-radius: 50%;
+
+    top: 35px;
+    left: 45px;
+}
+
+.spiner.circles div:nth-child(1){
+    transform: rotate(0deg)  translate(0, -30px);
+    opacity: .8;
+}
+
+.spiner.circles div:nth-child(2){
+    transform: rotate(45deg)  translate(0, -30px);
+    opacity: .7;
+}
+
+.spiner.circles div:nth-child(3){
+    transform: rotate(90deg)  translate(0, -30px);
+    opacity: .6;
+}
+
+.spiner.circles div:nth-child(4){
+    transform: rotate(135deg)  translate(0, -30px);
+    opacity:.5
+}
+
+.spiner.circles div:nth-child(5){
+    transform: rotate(180deg)  translate(0, -30px);
+    opacity: .4;
+}
+
+.spiner.circles div:nth-child(6){
+    transform: rotate(225deg)  translate(0, -30px);
+    opacity: .3;
+}
+
+.spiner.circles div:nth-child(7){
+    transform: rotate(270deg)  translate(0, -30px);
+    opacity: .2;
+}
+
+.spiner.circles div:nth-child(8){
+    transform: rotate(315deg)  translate(0, -30px);
+    opacity: .1;
+}
