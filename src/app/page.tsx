@@ -10,7 +10,6 @@ export default function Home() {
         setTimeout(() => {
             setPreloadingState(false);
         }, 5000);
-
     }, []);
 
     return (
