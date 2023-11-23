@@ -4,8 +4,6 @@ import  MainLeadingPage from '@/Components/laedingPage';
 import PreloadingPage from '@/Components/preloadPage';
 import { useEffect, useState } from 'react';
 
-var user = 'Elie';
-
 export default function Home() {
     const [preloadingState, setPreloadingState] = useState(true);
     useEffect(() => {
