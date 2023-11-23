@@ -3,16 +3,6 @@ import Link from 'next/link';
 
 // dev modules
 import style from '../Style/leading.module.css';
-import Loading from '@/Components/loading';
-
-const LoadingPage = () => {
-    return (
-        <section className={`${style.main}`}>
-            <Loading />
-            <span className={`${style.nameApp}`}>Hydrol-App</span>
-        </section>
-    );
-};
 
 const MainLeadingPage = () => {
     return (
@@ -44,4 +34,4 @@ const MainLeadingPage = () => {
     );
 };
 
-export { LoadingPage, MainLeadingPage };
+export default MainLeadingPage;
