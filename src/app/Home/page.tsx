@@ -1,9 +1,5 @@
 const about = () =>{
-    return (
-        <div>
-            About page
-        </div>
-    )
+    return <div className="AppContainer">Home Page</div>;
 
 };
 
