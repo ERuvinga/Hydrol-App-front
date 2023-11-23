@@ -1,6 +1,6 @@
 'use client' // use client side page
 
-import MainLeadingPage from '@/Components/laedingPage';
+import  MainLeadingPage from '@/Components/laedingPage';
 import PreloadingPage from '@/Components/preloadPage';
 import { useEffect, useState } from 'react';
 
@@ -17,7 +17,7 @@ export default function Home() {
 
     return (
         <section className="AppContainer">
-            {preloadingState ? <PreloadingPage /> : <MainLeadingPage />}
+            {preloadingState ? <PreloadingPage/> : <MainLeadingPage />}
         </section>
     );
 }
