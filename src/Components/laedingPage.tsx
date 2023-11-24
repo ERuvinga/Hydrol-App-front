@@ -22,7 +22,7 @@ const MainLeadingPage = () => {
                     etc.).
                 </p>
                 <div className={`${style.AllBtns}`}>
-                    <Link className={`${style.BtnHome}`} href={'/home'}>
+                    <Link className={`${style.BtnHome}`} href={'/Home'}>
                         Suivant
                     </Link>
                     <Link className={`${style.BtnLogin}`} href={'/Login'}>
