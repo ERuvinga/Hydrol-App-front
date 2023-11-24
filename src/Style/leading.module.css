@@ -13,6 +13,51 @@
     align-items: center;
     gap: 10px;
 }
+.icones {
+    color: #c1c1c1;
+    width: 30px;
+    height: 30px;
+    font-size: 0.9em;
+}
+
+.Nav {
+    padding: 5px 20px;
+    width: 100%;
+    height: fit-content;
+    min-height: 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 0 4px 0 #e3dfdf;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Nav .logo {
+    color: #3fbdf1;
+    font-family: monoBold;
+    font-size: 1.2em;
+}
+
+.Nav .loginBtn {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.Nav .loginBtn .toLoginPage {
+    background-color: #3fbdf1;
+    color: #fff;
+    border-radius: 3px;
+    text-decoration: none;
+    font-family: monoRegular;
+    font-size: 0.8em;
+    padding: 6px 15px;
+    box-shadow: 0 0 4px 0 #e3dfdf;
+}
 
 .nameApp {
     color: white;
@@ -24,32 +69,34 @@
     display: flex;
     gap: 15px;
 }
-
-.BtnHome {
-    color: white;
+.BtnHome,
+.BtnLogin {
     background-color: #3fbdf1;
-    padding: 12px 40px;
+    padding: 12px 35px;
     text-decoration: none;
+    font-size: 0.8em;
     border-radius: 2px;
-    box-shadow: 0 0 1px 0 #f9f9fc;
+    box-shadow: 0 0 4px 0 #f9f9fc;
+    color: white;
 }
 
 .BtnLogin {
-    display: none;
+    background-color: #e3dfdf;
+    color: #0b212b;
 }
 
 .ContainerLeadingPage {
-    width: 80%;
+    padding: 0 20px;
+    width: 100%;
     max-width: 1300px;
     height: 100vh;
-    margin: auto;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    color: #0b212b;
+    color: #226785;
     font-family: monoRegular;
     font-size: 0.8em;
 }
@@ -68,20 +115,69 @@
 }
 
 .ContainerLeadingPage .HeadDescr {
-    color: #0b212b;
+    color: #226785;
     font-family: poppinBlack;
     font-size: 1.9em;
 }
 
+.foot {
+    width: 100%;
+    padding-bottom: 40px;
+    margin: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 25px;
+    font-family: monoRegular;
+}
+
+.foot .footerDatas {
+    display: flex;
+    color: #226785;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 0.8em;
+}
+
+.foot .footerDatas .fIcones {
+    color: #226785;
+    width: 15px;
+}
 /*Mobile*/
 @media screen and (max-width: 500px) {
     .LeadingIllustrat {
         width: 98%;
+        height: 300px;
+    }
+
+    .toLoginPage,
+    .foot .footerDatas {
+        display: none;
+    }
+    .foot {
+        width: 100%;
+        padding-bottom: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        position: absolute;
+        left: 0;
+        bottom: 5%;
+    }
+
+    .footerDatas:nth-child(3) {
+        display: flex;
     }
 }
-
 /* large screen*/
 @media screen and (min-width: 860px) {
+    .Nav {
+        padding: 5px 15%;
+    }
     .ContainerLeadingPage {
         width: 80%;
         max-width: 1300px;
@@ -108,16 +204,9 @@
 
     .BtnLogin,
     .BtnHome {
-        padding: 6px 20px;
+        padding: 8px 25px;
         text-decoration: none;
         border-radius: 2px;
-        box-shadow: 0 0 1px 0 #f9f9fc;
-    }
-
-    .BtnLogin {
-        display: flex;
-        color: #0b212b;
-        border: #f9f9fc solid 2px;
     }
 
     .BtnLogin:hover,
