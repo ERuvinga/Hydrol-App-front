@@ -1,7 +1,10 @@
-'use client' // use client side page
+'use client'; // use client side page
 
-import  MainLeadingPage from '@/Components/laedingPage';
+//Lib
+import MainLeadingPage from '@/Components/laedingPage';
 import PreloadingPage from '@/Components/preloadPage';
+
+//native lib
 import { useEffect, useState } from 'react';
 
 export default function Home() {
@@ -10,12 +13,13 @@ export default function Home() {
         setTimeout(() => {
             setPreloadingState(false);
         }, 5000);
-
     }, []);
 
     return (
-        <section className="AppContainer">
-            {preloadingState ? <PreloadingPage/> : <MainLeadingPage />}
-        </section>
+        <>
+            <section className="AppContainer">
+                {preloadingState ? <PreloadingPage /> : <MainLeadingPage />}
+            </section>
+        </>
     );
 }

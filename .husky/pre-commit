@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo 'Nouveau commit -> Checking *.tsx and ts files';
+npx lint-staged;
+echo 'Fin Checking';

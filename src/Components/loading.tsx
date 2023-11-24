@@ -1,5 +1,5 @@
-const Loading = ()=>{
-    return(
+const Loading = () => {
+    return (
         <div className="spiner circles">
             <div></div>
             <div></div>
@@ -10,7 +10,7 @@ const Loading = ()=>{
             <div></div>
             <div></div>
         </div>
-    )
-}
+    );
+};
 
 export default Loading;

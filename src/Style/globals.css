@@ -1,47 +1,50 @@
 /*Global Css*/
-*{
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
 html,
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
-  font-family: poppinRegular;
+    max-width: 100vw;
+    overflow-x: hidden;
+    font-family: poppinRegular;
 }
 
-.AppContainer{
-  width: 100%;
-  height: 100vh;
+.AppContainer {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
-.border{
-  border: solid 1px black;
+.border {
+    border: solid 1px black;
 }
 
 /*import Fonts*/
 
 @font-face {
-  font-family: poppinBlack;
-  src: url("../Style/font/Poppins-Black.ttf");
+    font-family: poppinBlack;
+    src: url('../Style/font/Poppins-Black.ttf');
 }
 
 @font-face {
-  font-family: poppinRegular;
-  src: url("../Style/font/Poppins-Regular.ttf");
+    font-family: poppinRegular;
+    src: url('../Style/font/Poppins-Regular.ttf');
 }
 
 @font-face {
-  font-family: monoBold;
-  src: url("../Style/font/SpaceMono-Bold.ttf");
+    font-family: monoBold;
+    src: url('../Style/font/SpaceMono-Bold.ttf');
 }
 
 @font-face {
-  font-family: monoRegular;
-  src: url("../Style/font/SpaceMono-Regular.ttf");
+    font-family: monoRegular;
+    src: url('../Style/font/SpaceMono-Regular.ttf');
 }
 
 /*import Css modules*/
-@import "./components.css";
+@import './components.css';
