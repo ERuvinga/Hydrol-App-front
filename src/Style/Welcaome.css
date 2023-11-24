@@ -13,6 +13,20 @@
     }
 }
 
+/*Anim text*/
+@keyframes AnimInfomobile {
+    from {
+        position: absolute;
+        top: 100px;
+        right: -200px;
+    }
+
+    to {
+        position: absolute;
+        top: 100px;
+        right: 30px;
+    }
+}
 .BgImg {
     width: 100%;
     height: 100vh;
@@ -29,14 +43,8 @@
     height: 100px;
 }
 
-.BgImg .Containeranimated {
-    position: absolute;
-    top: 40px;
-    right: 60px;
-    animation: AnimInfo 5s ease-in-out;
-}
-
 .BgImg .Containeranimated .AnimatedText {
+    width: 250px;
     background-color: #fff;
     color: #226785;
     display: flex;
@@ -71,22 +79,20 @@
 
 .wrapperText {
     width: 100%;
-    height: 40vh;
+    height: 65vh;
     position: fixed;
     bottom: 0;
     left: 0;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
     background: linear-gradient(
         to top,
         rgba(0, 0, 0, 1),
         rgba(0, 0, 0, 0) 100%
     );
-}
-
-.TextContainer {
-    color: white;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+    color: #fff;
 }
 
 .TextContainer .TitlePage {
@@ -97,6 +103,15 @@
 .TextContainer .Applist {
     font-family: monoRegular;
     font-size: 0.8em;
+}
+
+.BgImg .BtnsLink {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 40px;
 }
 
 .BtnsLink a {
@@ -118,42 +133,46 @@
 
 /*Mobile*/
 @media screen and (max-width: 500px) {
+    .Containeranimated {
+        position: absolute;
+        top: 100px;
+        right: 30px;
+        animation: AnimInfomobile 5s ease-in-out;
+    }
+    .TextContainer .TitlePage {
+        font-size: 1.8em;
+    }
+    .BgImg .Logo {
+        position: absolute;
+        top: 10px;
+        left: 15px;
+        width: 60px;
+        height: 80px;
+    }
+
+    .BgImg .BtnsLink {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 40px;
+    }
+
+    .BtnsLink a {
+        width: 80%;
+        text-align: center;
+    }
 }
 
 /* large screen*/
 @media screen and (min-width: 860px) {
-    .wrapperText {
-        height: 65vh;
-        background: linear-gradient(
-            to top,
-            rgba(0, 0, 0, 1),
-            rgba(0, 0, 0, 0) 100%
-        );
-        padding: 40px;
-    }
-
-    .TextContainer {
-        color: white;
-        display: flex;
-        flex-direction: column;
-        margin-top: 40vh;
-    }
-
-    .BgImg .BtnsLink {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        gap: 25px;
-        margin-top: 40px;
-    }
-
     .BtnsLink a:hover {
         opacity: 0.8;
     }
-
-    .BgImg .Containeranimated .AnimatedText {
-        color: #226785;
-        width: 250px;
+    .Containeranimated {
+        position: absolute;
+        top: 40px;
+        right: 60px;
+        animation: AnimInfo 5s ease-in-out;
     }
 }
