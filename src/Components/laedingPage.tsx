@@ -3,7 +3,6 @@ import Link from 'next/link';
 
 // dev modules
 import style from '../Style/leading.module.css';
-
 const MainLeadingPage = () => {
     return (
         <section className={`${style.ContainerLeadingPage}`}>
