@@ -38,7 +38,7 @@ const WelcomePage = () => {
                             <li>Analysez vos donnees d`eau en temps reel</li>
                         </ul>
                         <div className="BtnsLink">
-                            <Link href="/Login" className="activBtn">
+                            <Link href="/Register" className="activBtn">
                                 ACTIVATION COMPTE
                             </Link>
                             <Link href="/Login" className="loginBtn">
