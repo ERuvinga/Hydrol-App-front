@@ -21,7 +21,7 @@ body {
 }
 
 .border {
-    border: solid 1px black;
+    border: solid 1px #fff;
 }
 
 /*import Fonts*/
@@ -48,3 +48,4 @@ body {
 
 /*import Css modules*/
 @import './components.css';
+@import './Welcaome.css';
