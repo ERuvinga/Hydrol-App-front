@@ -123,7 +123,6 @@ const InputField = (datas: proprietyInput) => {
                     result.json().then((datas) => {
                         if (datas.Updating) {
                             Router.push('/Login');
-                            console.log(LogRegStatesValues);
                         }
                     });
                 } else {
