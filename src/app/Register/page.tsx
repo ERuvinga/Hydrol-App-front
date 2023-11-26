@@ -28,7 +28,7 @@ const Index = () => {
     }, []);
     return (
         <>
-            <section className="body_log_reg border">
+            <section className="body_log_reg">
                 {StateNotification.stateMsg && <Notification />}
                 <div className="bloc">
                     <BackHome />

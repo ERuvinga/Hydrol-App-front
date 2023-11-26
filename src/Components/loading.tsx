@@ -1,6 +1,16 @@
-const Loading = () => {
+interface ColorSnipper {
+    WhiteOrBlack: boolean;
+}
+
+const Loading = (datas: ColorSnipper) => {
     return (
-        <div className="spiner circles">
+        <div
+            className={
+                datas.WhiteOrBlack == true
+                    ? 'spinerWhite circles'
+                    : 'spinerBlue circles'
+            }
+        >
             <div></div>
             <div></div>
             <div></div>
