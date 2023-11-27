@@ -49,7 +49,6 @@ const withAuth = (api_link:any, Localtoken:any, setStatePage:any, setUaseAuth:an
                                 }
                         }
                     }
-
                 })
         })
         .catch(error => {

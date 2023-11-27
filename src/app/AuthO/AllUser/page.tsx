@@ -4,6 +4,7 @@ import { withAuth } from '@/app/Lib/Auth';
 import Loading from '@/Components/loading';
 import { AuthUser } from '@/States/AuthUser';
 import { Link_toApi } from '@/States/LoginRegisterStates';
+import AuthNav from '@/Components/commonComponents/NavAuthUser';
 
 //Next Libs
 import { useEffect, useState } from 'react';
@@ -13,7 +14,7 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 const Index = () => {
     // states and atoms
     const [loadingPage, setLoadingPage] = useState(false);
-    const [DatasOfAuthUser, setDatasOfAuthUser] = useRecoilState(AuthUser);
+    const [DatasOfAuthUser, setDatasOfAuthUser]: any = useRecoilState(AuthUser);
     const Api_Url = useRecoilValue(Link_toApi);
 
     //initializ States
@@ -33,15 +34,22 @@ const Index = () => {
     }, []);
     return (
         <>
-            {loadingPage /*|| DatasOfAuthUser*/ ? (
-                <main>
-                    <h1>All User Page</h1>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Voluptas delectus iure animi laudantium facere odio
-                        mollitia! Ex libero, iusto consequatur, sunt omnis
-                        repellat tenetur, eius earum dicta natus alias. Fugiat!
-                    </p>
+            {loadingPage || DatasOfAuthUser ? (
+                <main className="AppContainer">
+                    <AuthNav
+                        name={DatasOfAuthUser.name}
+                        email={DatasOfAuthUser.email}
+                        Tel={DatasOfAuthUser.tel}
+                        image={DatasOfAuthUser.picture}
+                    />
+                    <section>
+                        <div className="LoaderPage">
+                            <Loading WhiteOrBlack={false} />
+                            <span className="loadingText">
+                                Connexion au Sous-Compteur d`eau...
+                            </span>
+                        </div>
+                    </section>
                 </main>
             ) : (
                 <div className="LoaderPage">
