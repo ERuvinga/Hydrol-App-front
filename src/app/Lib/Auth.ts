@@ -21,7 +21,6 @@ const withAuth = (api_link:any, Localtoken:any, setStatePage:any, setUaseAuth:an
 
                     else {
                         if(!UserAuth){ // if no user saved
-                            console.log(user.userFund.typeAccount);
                                 switch(user.userFund.typeAccount){
                                         case "Admin":
                                             if(ActualiUrl.includes("/AuthO/Admin")){

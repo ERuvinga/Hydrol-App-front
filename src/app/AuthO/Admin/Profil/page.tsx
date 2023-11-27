@@ -32,7 +32,6 @@ const ProfilPage = () => {
             DatasOfAuthUser,
             Router
         );
-        console.log(DatasOfAuthUser);
     }, []);
 
     return (

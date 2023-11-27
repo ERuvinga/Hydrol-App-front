@@ -10,7 +10,6 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import AdminNav from '@/Components/commonComponents/NavAuthAdmin';
-import Link from 'next/link';
 
 const Index = () => {
     // states and atoms
@@ -42,35 +41,12 @@ const Index = () => {
                         Tel={DatasOfAuthUser.tel}
                         image={DatasOfAuthUser.picture}
                     />
-                    <section className="ProfilPage">
-                        <span className="pagePath">Pages/Main</span>
-                        <div className="MainPage">
-                            <div className="Title">
-                                Gérez les menages et les sous compteurs faisant
-                                partie de votre Reseau
-                            </div>
-                            <p className="text">
-                                Ajouter, supprimer des Menages, mettre à jour
-                                les données des utilisateurs, arreter et mettre
-                                à marche les electrovannes, envoyez des Alertes
-                                aux utilisateur, etc.
-                            </p>
-                            <div className="containerLinks">
-                                <Link
-                                    href={'/AuthO/Admin/Menages'}
-                                    className="btnToMenages"
-                                >
-                                    Gérez les Menages
-                                </Link>
-                                <Link
-                                    href={'/AuthO/Admin/Compteurs'}
-                                    className="btnToCompteurs"
-                                >
-                                    Gérez les Compteurs
-                                </Link>
-                            </div>
-                        </div>
-                    </section>
+                    <div className="LoaderPage">
+                        <Loading WhiteOrBlack={false} />
+                        <span className="loadingText">
+                            Connexion au Sous-Compteur d`eau...
+                        </span>
+                    </div>
                 </main>
             ) : (
                 <div className="LoaderPage">
