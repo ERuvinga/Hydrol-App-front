@@ -97,4 +97,49 @@
     color: #3fbdf1;
     font-family: monoRegular;
     font-size: 0.8em;
+    text-align: center;
+}
+
+/*Nav bar of Auth user*/
+
+.profilDatas {
+    display: flex;
+    gap: 10px;
+}
+
+.Identity {
+    display: flex;
+    flex-direction: column;
+}
+
+.Identity .name {
+    font-family: poppinBlack;
+    color: #226785;
+    font-size: 0.9em;
+}
+
+.Identity .tel {
+    font-family: monoRegular;
+    font-size: 0.8em;
+    color: #226785;
+}
+
+.profilImg {
+    width: 50px;
+    height: 50px;
+}
+
+@media screen and (max-width: 400px) {
+    .Identity .name {
+        font-size: 0.8em;
+    }
+
+    .Identity .tel {
+        font-size: 0.7em;
+    }
+
+    .profilImg {
+        width: 40px;
+        height: 40px;
+    }
 }
