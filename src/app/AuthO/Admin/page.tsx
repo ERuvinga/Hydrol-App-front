@@ -9,11 +9,12 @@ import { Link_toApi } from '@/States/LoginRegisterStates';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useRecoilState, useRecoilValue } from 'recoil';
+import AdminNav from '@/Components/commonComponents/NavAuthAdmin';
 
 const Index = () => {
     // states and atoms
     const [loadingPage, setLoadingPage] = useState(false);
-    const [DatasOfAuthUser, setDatasOfAuthUser] = useRecoilState(AuthUser);
+    const [DatasOfAuthUser, setDatasOfAuthUser]: any = useRecoilState(AuthUser);
     const Api_Url = useRecoilValue(Link_toApi);
 
     //initializ States
@@ -32,15 +33,20 @@ const Index = () => {
     }, []);
     return (
         <>
-            {loadingPage /*|| DatasOfAuthUser*/ ? (
-                <main>
-                    <h1>Admin Page</h1>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Voluptas delectus iure animi laudantium facere odio
-                        mollitia! Ex libero, iusto consequatur, sunt omnis
-                        repellat tenetur, eius earum dicta natus alias. Fugiat!
-                    </p>
+            {loadingPage || DatasOfAuthUser ? (
+                <main className="AppContainer">
+                    <AdminNav
+                        name={DatasOfAuthUser.name}
+                        email={DatasOfAuthUser.email}
+                        Tel={DatasOfAuthUser.tel}
+                        image={DatasOfAuthUser.picture}
+                    />
+                    <div className="LoaderPage">
+                        <Loading WhiteOrBlack={false} />
+                        <span className="loadingText">
+                            Connexion au Sous-Compteur d`eau...
+                        </span>
+                    </div>
                 </main>
             ) : (
                 <div className="LoaderPage">

@@ -10,11 +10,13 @@ interface DatasOfMainUser {
     image: string;
 }
 
-const AuthNav = (datas: DatasOfMainUser) => {
+const AdminNav = (datas: DatasOfMainUser) => {
     return (
         <div className={`${style.Nav}`}>
             <div className={'profilDatas'}>
                 <Image
+                    width={100}
+                    height={100}
                     alt={'profil'}
                     src={
                         datas.image != ''
@@ -22,8 +24,6 @@ const AuthNav = (datas: DatasOfMainUser) => {
                             : '/img/profile.png'
                     }
                     className="profilImg"
-                    width={100}
-                    height={100}
                 />
                 <div className="Identity">
                     <span className="name">{datas.name}</span>
@@ -33,10 +33,10 @@ const AuthNav = (datas: DatasOfMainUser) => {
                 </div>
             </div>
             <div className={style.loginBtn}>
-                <Link href={'/AuthO/AllUser'}>
+                <Link href={'/AuthO/Admin'}>
                     <HomeIcon className={style.icones} />
                 </Link>
-                <Link href={'/AuthO/AllUser/Profil'}>
+                <Link href={'/AuthO/Admin/Profil'}>
                     <Cog6ToothIcon className={style.icones} />
                 </Link>
             </div>
@@ -44,4 +44,4 @@ const AuthNav = (datas: DatasOfMainUser) => {
     );
 };
 
-export default AuthNav;
+export default AdminNav;
