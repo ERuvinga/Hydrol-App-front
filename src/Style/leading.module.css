@@ -1,6 +1,5 @@
 .main {
     background-color: #3fbdf1;
-
     font-family: monoBold;
     font-size: 1.5em;
 
@@ -15,13 +14,19 @@
 }
 .icones {
     color: #c1c1c1;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     font-size: 0.9em;
+    transition: all 0.4s ease-in-out;
+}
+
+.icones:hover {
+    color: #226785;
+    transform: scale(1.01);
 }
 
 .Nav {
-    padding: 5px 20px;
+    padding: 20px 25px;
     width: 100%;
     height: fit-content;
     min-height: 60px;
@@ -45,7 +50,7 @@
 .Nav .loginBtn {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
 }
 
 .Nav .loginBtn .toLoginPage {
@@ -176,7 +181,7 @@
 /* large screen*/
 @media screen and (min-width: 860px) {
     .Nav {
-        padding: 5px 15%;
+        padding: 15px 15%;
     }
     .ContainerLeadingPage {
         width: 80%;

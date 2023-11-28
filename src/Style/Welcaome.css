@@ -17,14 +17,14 @@
 @keyframes AnimInfomobile {
     from {
         position: absolute;
-        top: 100px;
+        top: 20px;
         right: -200px;
     }
 
     to {
         position: absolute;
-        top: 100px;
-        right: 30px;
+        top: 20px;
+        right: 20px;
     }
 }
 .BgImg {
@@ -43,6 +43,12 @@
     height: 100px;
 }
 
+.BgImg .Containeranimated {
+    position: absolute;
+    top: 40px;
+    right: 60px;
+    animation: AnimInfo 5s ease-in-out;
+}
 .BgImg .Containeranimated .AnimatedText {
     width: 250px;
     background-color: #fff;
@@ -132,12 +138,28 @@
 }
 
 /*Mobile*/
+@media screen and (max-width: 350px) {
+    .BgImg .Containeranimated .AnimatedText {
+        display: none;
+    }
+}
+/*Mobile*/
 @media screen and (max-width: 500px) {
-    .Containeranimated {
+    .wrapperText {
+        width: 100%;
+        height: 70vh;
+        gap: 10px;
+    }
+
+    .BgImg .Containeranimated {
         position: absolute;
-        top: 100px;
-        right: 30px;
+        top: 20px;
+        right: 20px;
         animation: AnimInfomobile 5s ease-in-out;
+    }
+    .BgImg .Containeranimated .AnimatedText {
+        width: 200px;
+        font-size: 0.8em;
     }
     .TextContainer .TitlePage {
         font-size: 1.8em;
@@ -149,13 +171,16 @@
         width: 60px;
         height: 80px;
     }
+    .BgImg .Containeranimated .callToAction {
+        display: none;
+    }
 
     .BgImg .BtnsLink {
         flex-direction: column;
         align-items: center;
         justify-content: center;
         gap: 20px;
-        margin-top: 40px;
+        margin-top: 15px;
     }
 
     .BtnsLink a {
@@ -169,10 +194,6 @@
     .BtnsLink a:hover {
         opacity: 0.8;
     }
-    .Containeranimated {
-        position: absolute;
-        top: 40px;
-        right: 60px;
-        animation: AnimInfo 5s ease-in-out;
+    .protect {
     }
 }

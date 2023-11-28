@@ -21,7 +21,7 @@ body {
 }
 
 .border {
-    border: solid 1px #fff;
+    border: solid 1px black;
 }
 
 /*import Fonts*/
@@ -49,3 +49,5 @@ body {
 /*import Css modules*/
 @import './components.css';
 @import './Welcaome.css';
+@import './logRegStyle.css';
+@import './AuthPages.css';

@@ -1,6 +1,5 @@
 // Externes libs
 //Natives Libs
-
 import { ExclamationCircleIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
@@ -15,10 +14,10 @@ const WelcomePage = () => {
                     </span>
                     <div className="AnimatedText">
                         Bienvenu sur Hydrol-App, Une application web vous
-                        permettant de gerer la consommation d'eau dans votre
+                        permettant de gerer la consommation d`eau dans votre
                         menage.
                         <span className="callToAction">
-                            connectez pour plus d'informations!
+                            connectez pour plus d`informations!
                         </span>
                     </div>
                 </section>
@@ -39,7 +38,7 @@ const WelcomePage = () => {
                             <li>Analysez vos donnees d`eau en temps reel</li>
                         </ul>
                         <div className="BtnsLink">
-                            <Link href="/Login" className="activBtn">
+                            <Link href="/Register" className="activBtn">
                                 ACTIVATION COMPTE
                             </Link>
                             <Link href="/Login" className="loginBtn">

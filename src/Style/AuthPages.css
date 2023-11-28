@@ -1,0 +1,209 @@
+.ProfilPage {
+    width: 80%;
+    margin: auto;
+    padding: 60px 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagePath {
+    font-family: monoRegular;
+    color: #226785;
+    font-size: 0.8em;
+    position: absolute;
+    left: 10%;
+    top: 15vh;
+}
+
+.profilImage {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.DatasOfUser {
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 5px;
+}
+
+.DatasOfUser .containerDatas {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.DatasOfUser .containerDatas .DesrcDatas {
+    color: #226785;
+    font-family: poppinRegular;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.DatasOfUser .containerDatas .valueOfDescr {
+    color: #226785;
+    font-family: monoRegular;
+    font-size: 0.8em;
+}
+
+/*Admin Main Page*/
+
+.MainPage {
+    width: 80%;
+    margin: 15vh auto;
+    padding: 60px 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.MainPage .Title {
+    width: 65%;
+    font-family: poppinBlack;
+    font-size: 1.1em;
+    color: #226785;
+    text-align: center;
+}
+
+.MainPage .text {
+    width: 80%;
+    font-family: monoRegular;
+    color: #226785;
+    font-size: 0.7em;
+    text-align: center;
+}
+
+.containerLinks {
+    display: flex;
+    margin: 2px;
+    gap: 10px;
+}
+
+.containerLinks .btnToMenages,
+.containerLinks .btnToCompteurs {
+    padding: 10px 20px;
+    text-decoration: none;
+    font-family: monoRegular;
+    font-size: 0.7em;
+    border-radius: 3px;
+    box-shadow: 0 0 1px 0 #e3dfdf;
+    transition: all 0.5s ease-in-out;
+    text-align: center;
+}
+
+.containerLinks .btnToMenages:hover,
+.containerLinks .btnToCompteurs:hover {
+    box-shadow: 0 0 1px 0 #226785;
+    opacity: 0.8;
+}
+
+.containerLinks .btnToMenages {
+    background-color: #3fbdf1;
+    color: #fff;
+}
+
+.containerLinks .btnToCompteurs {
+    border: #e3dfdf solid 1px;
+    color: #226785;
+}
+
+/*All Users*/
+.DisplayDatasOfUser {
+    margin-top: 80px;
+}
+
+.RefreshDatas {
+    width: 85%;
+    margin: 10px auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 13px;
+}
+
+.RefreshDatas .Icone {
+    width: 20px;
+}
+
+.PlusBtn {
+    display: flex;
+    align-items: center;
+    padding: 5px 25px;
+    background-color: #fff;
+    color: #3fbdf1;
+    border-radius: 3px;
+    border: #3fbdf1 1px solid;
+}
+
+.ReloadBtn {
+    display: flex;
+    align-items: center;
+    padding: 5px 25px;
+    background-color: #3fbdf1;
+    color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 0 2px 0 #e3dfdf;
+    transition: all 0.5s ease-in-out;
+}
+
+.ReloadBtn:hover,
+.PlusBtn:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    scale: (1.2);
+}
+
+.LoadingUsers {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.LoadingUsers .loadingText {
+    color: #3fbdf1;
+    font-family: monoRegular;
+    font-size: 0.8em;
+    text-align: center;
+}
+
+.Card {
+    width: 250px;
+}
+@media screen and (max-width: 650px) {
+    .MainPage {
+        width: 100%;
+        margin: 5vh auto;
+        gap: 10px;
+    }
+
+    .MainPage .Title {
+        width: 100%;
+        font-size: 1em;
+        color: #226785;
+        text-align: left;
+    }
+
+    .MainPage .text {
+        width: 100%;
+        font-size: 0.7em;
+        text-align: left;
+    }
+
+    .containerLinks {
+        width: 80%;
+        margin-top: 20px;
+        flex-direction: column;
+        gap: 10px;
+    }
+}

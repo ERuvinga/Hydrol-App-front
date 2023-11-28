@@ -4,7 +4,7 @@ import style from '../Style/leading.module.css';
 const preloadingPage = () => {
     return (
         <section className={`${style.main}`}>
-            <Loading />
+            <Loading WhiteOrBlack={true} />
             <span className={`${style.nameApp}`}>Hydrol-App</span>
         </section>
     );
