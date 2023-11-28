@@ -14,7 +14,7 @@
     font-family: monoRegular;
     color: #226785;
     font-size: 0.8em;
-    position: fixed;
+    position: absolute;
     left: 10%;
     top: 15vh;
 }
@@ -102,7 +102,7 @@
 
 .containerLinks .btnToMenages:hover,
 .containerLinks .btnToCompteurs:hover {
-    box-shadow: 0 0 2px 0 #226785;
+    box-shadow: 0 0 1px 0 #226785;
     opacity: 0.8;
 }
 
@@ -116,6 +116,70 @@
     color: #226785;
 }
 
+/*All Users*/
+.DisplayDatasOfUser {
+    margin-top: 80px;
+}
+
+.RefreshDatas {
+    width: 85%;
+    margin: 10px auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 13px;
+}
+
+.RefreshDatas .Icone {
+    width: 20px;
+}
+
+.PlusBtn {
+    display: flex;
+    align-items: center;
+    padding: 5px 25px;
+    background-color: #fff;
+    color: #3fbdf1;
+    border-radius: 3px;
+    border: #3fbdf1 1px solid;
+}
+
+.ReloadBtn {
+    display: flex;
+    align-items: center;
+    padding: 5px 25px;
+    background-color: #3fbdf1;
+    color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 0 2px 0 #e3dfdf;
+    transition: all 0.5s ease-in-out;
+}
+
+.ReloadBtn:hover,
+.PlusBtn:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    scale: (1.2);
+}
+
+.LoadingUsers {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.LoadingUsers .loadingText {
+    color: #3fbdf1;
+    font-family: monoRegular;
+    font-size: 0.8em;
+    text-align: center;
+}
+
+.Card {
+    width: 250px;
+}
 @media screen and (max-width: 650px) {
     .MainPage {
         width: 100%;

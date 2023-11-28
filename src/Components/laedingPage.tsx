@@ -25,11 +25,14 @@ const MainLeadingPage = () => {
                         factures, etc.).
                     </p>
                     <div className={`${style.AllBtns}`}>
-                        <Link className={`${style.BtnHome}`} href={'/Home'}>
+                        <Link className={`${style.BtnHome}`} href={'/Login'}>
                             Suivant
                         </Link>
-                        <Link className={`${style.BtnLogin}`} href={'/Login'}>
-                            Connexion
+                        <Link
+                            className={`${style.BtnLogin}`}
+                            href={'/Register'}
+                        >
+                            Compte
                         </Link>
                     </div>
                 </div>

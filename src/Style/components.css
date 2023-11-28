@@ -130,6 +130,92 @@
     border-radius: 50%;
 }
 
+/*Cards of user*/
+.containerCards {
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.containerCards .Card {
+    width: 250px;
+    box-shadow: 0 0 2px #e3dfdf;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.containerCards .Card .ContainerPicture {
+    width: 100%;
+    height: 110px;
+    border-radius: 5px;
+    background: #f9f9fc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerCards .Card .ContainerPicture .ImageUser {
+    width: 100%;
+    height: 100%;
+}
+
+.Card .TextAppart {
+    color: #226785;
+    font-size: 0.8em;
+    font-family: monoRegular;
+}
+
+.Card .cardDatas {
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.Card .cardDatas .name {
+    font-family: poppinBlack;
+    color: #3fbdf1;
+    font-size: 0.9em;
+}
+
+.Card .cardDatas .coordoUser {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    color: #226785;
+    font-family: monoRegular;
+    font-size: 0.7em;
+}
+
+.Card .cardDatas .nameValue {
+    font-weight: bold;
+}
+
+.Card .ContainerBtn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 0 10px 10px 0;
+}
+
+.Card .Btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 25px;
+    background-color: #3fbdf1;
+    border-radius: 2px;
+    box-shadow: 0 0 2px 0 #f9f9fc;
+}
+
+.Card .Icone {
+    width: 20px;
+    color: #fff;
+}
 @media screen and (max-width: 400px) {
     .Identity .name {
         font-size: 0.8em;
