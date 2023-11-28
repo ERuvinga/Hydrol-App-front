@@ -26,7 +26,7 @@ const MainLeadingPage = () => {
                     </p>
                     <div className={`${style.AllBtns}`}>
                         <Link className={`${style.BtnHome}`} href={'/Login'}>
-                            Suivant
+                            Connexion
                         </Link>
                         <Link
                             className={`${style.BtnLogin}`}

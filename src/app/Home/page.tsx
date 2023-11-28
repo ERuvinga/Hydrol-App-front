@@ -14,10 +14,10 @@ const WelcomePage = () => {
                     </span>
                     <div className="AnimatedText">
                         Bienvenu sur Hydrol-App, Une application web vous
-                        permettant de gerer la consommation d'eau dans votre
+                        permettant de gerer la consommation d`eau dans votre
                         menage.
                         <span className="callToAction">
-                            connectez pour plus d'informations!
+                            connectez pour plus d`informations!
                         </span>
                     </div>
                 </section>
