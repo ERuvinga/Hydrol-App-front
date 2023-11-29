@@ -54,11 +54,9 @@ const Index = () => {
                     {StateNotification.stateMsg && <Notification />}
                     <div className="bloc border">
                         <section className="login_form border">
-                            <img
-                                src="/img/logo.jpg"
-                                className="logo"
-                                alt="logo"
-                            />
+                            <span className="border TitleForm">
+                                Renseignez les données du nouvel Appartement
+                            </span>
                             <InputField
                                 labelText="email/Tél"
                                 placeholderText="Hydro@gmail.com/+243"

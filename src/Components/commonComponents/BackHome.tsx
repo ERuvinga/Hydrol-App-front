@@ -2,9 +2,13 @@
 import { ArrowLeftIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
-const BackHome = () => {
+interface LinkToBac {
+    link: string;
+}
+
+const BackHome = (datas: LinkToBac) => {
     return (
-        <Link className="backHome" href="/Home">
+        <Link className="backHome" href={datas.link}>
             <ArrowLeftIcon className="icone" />
         </Link>
     );
