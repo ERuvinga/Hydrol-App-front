@@ -15,6 +15,7 @@ import AdminNav from '@/Components/commonComponents/NavAuthAdmin';
 import { AllUsers } from '@/States/Users';
 import { ArrowPathIcon, PlusIcon } from '@heroicons/react/24/outline';
 import CardUsers from '@/Components/commonComponents/cardUser';
+import Link from 'next/link';
 
 const Index = () => {
     // states and atoms
@@ -76,18 +77,11 @@ const Index = () => {
                     DisplayDatasOfUser"
                     >
                         <span className="RefreshDatas">
-                            <span
-                                className="PlusBtn"
-                                onClick={() => {
-                                    fetch('http://192.168.43.76')
-                                        .then((datas) => {
-                                            console.log(datas);
-                                        })
-                                        .catch((err) => console.log(err));
-                                }}
-                            >
-                                <PlusIcon className="Icone" />
-                            </span>
+                            <Link href="/AuthO/Admin/Menages/NewUser">
+                                <span className="PlusBtn">
+                                    <PlusIcon className="Icone" />
+                                </span>
+                            </Link>
                             <span
                                 className="ReloadBtn"
                                 onClick={() => {
@@ -116,6 +110,9 @@ const Index = () => {
                                             date={value.registerDate}
                                             key={index}
                                             id_Card={index}
+                                            idUser={value._id}
+                                            reloadFunction={setReloadUsers}
+                                            reloadState={ReloadUsers}
                                         />
                                     )
                                 )}
