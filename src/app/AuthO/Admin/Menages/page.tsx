@@ -10,12 +10,12 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import AdminNav from '@/Components/commonComponents/NavAuthAdmin';
+import Link from 'next/link';
 
 //Atoms
 import { AllUsers } from '@/States/Users';
 import { ArrowPathIcon, PlusIcon } from '@heroicons/react/24/outline';
 import CardUsers from '@/Components/commonComponents/cardUser';
-import Link from 'next/link';
 
 const Index = () => {
     // states and atoms

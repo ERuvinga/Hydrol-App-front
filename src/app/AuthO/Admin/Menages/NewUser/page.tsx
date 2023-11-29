@@ -13,7 +13,6 @@ import { Link_toApi, messageOfServer } from '@/States/LoginRegisterStates';
 import { AuthUser } from '@/States/AuthUser';
 import { withAuth } from '@/app/Lib/Auth';
 import { useRouter } from 'next/navigation';
-import { NewUser } from '@/States/Users';
 import Loading from '@/Components/loading';
 
 const Index = () => {
@@ -36,7 +35,6 @@ const Index = () => {
         );
     }, []);
 
-    const NewUserDatas = useRecoilState(NewUser);
     const [StateNotification, setStateNotification] =
         useRecoilState(messageOfServer);
 
@@ -52,33 +50,36 @@ const Index = () => {
                 <section className="body_log_reg">
                     <BackHome link="/AuthO/Admin/Menages" />
                     {StateNotification.stateMsg && <Notification />}
-                    <div className="bloc border">
-                        <section className="login_form border">
-                            <span className="border TitleForm">
+                    <div className="bloc">
+                        <section className="login_form ">
+                            <span className=" TitleForm">
                                 Renseignez les données du nouvel Appartement
                             </span>
                             <InputField
-                                labelText="email/Tél"
-                                placeholderText="Hydro@gmail.com/+243"
-                                form_name="Login"
+                                labelText="pre-nom"
+                                placeholderText="Elie"
                                 type="text"
-                                recoilAtom={NewUserDatas}
                                 identity={0}
                             />
                             <InputField
-                                labelText="password"
-                                placeholderText="******"
-                                form_name="Login"
-                                type="password"
-                                recoilAtom={NewUserDatas}
+                                labelText="nom"
+                                placeholderText="Ruvinga"
+                                type="text"
                                 identity={1}
                             />
                             <InputField
-                                type="button"
-                                placeholderText="Login"
-                                form_name="Login"
-                                recoilAtom={NewUserDatas}
+                                labelText="email"
+                                placeholderText="Hydro@gmail.com"
+                                type="text"
+                                identity={2}
                             />
+                            <InputField
+                                labelText="tel"
+                                placeholderText="+243"
+                                type="text"
+                                identity={3}
+                            />
+                            <InputField type="button" placeholderText="Crée" />
                         </section>
                     </div>
                 </section>

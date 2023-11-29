@@ -12,14 +12,13 @@ import {
     messageOfServer,
 } from '@/States/LoginRegisterStates';
 import { AuthUser } from '@/States/AuthUser';
+import { NewUser } from '@/States/Users';
 
 interface proprietyInput {
     placeholderText: string;
-    form_name: string;
     type: string;
     labelText?: string;
     identity?: number;
-    recoilAtom: any;
 }
 
 const InputField = (datas: proprietyInput) => {
@@ -32,8 +31,7 @@ const InputField = (datas: proprietyInput) => {
     const [ErrorStates, setErrorStates] = useRecoilState(errorLogRegisterForm);
     const setMessageServer = useSetRecoilState(messageOfServer);
     const setAuthUser = useSetRecoilState(AuthUser);
-    const LogRegStatesValues = datas.recoilAtom[0]; // values of states
-    const setLogRegStatesValues = datas.recoilAtom[1]; // function change States Values
+    const [NewUserDatas, setNewUserDatas]: any = useRecoilState(NewUser);
     const url_to_api = useRecoilValue(Link_toApi);
     const Router = useRouter();
 
@@ -43,54 +41,31 @@ const InputField = (datas: proprietyInput) => {
 
     useEffect(() => {
         // checking Value of Error States
-        if (ErrorStates.invalidEmail && datas.labelText === 'email/Tél') {
+        if (ErrorStates.invalidEmail && datas.labelText === 'email') {
             setInValidClassname('invalidEmail');
-        } else if (
-            ErrorStates.pswdAndCofirmPswd &&
-            datas.labelText === 'confirm-password'
-        ) {
-            setInValidClassname('invalidPassword');
-        } else if (
-            ErrorStates.invalidMatricule &&
-            datas.labelText === 'matricule'
-        ) {
-            setInValidClassname('invalidMatricule');
+        } else if (ErrorStates.invalidTelInput && datas.labelText === 'tel') {
+            setInValidClassname('invalidTelInput');
         } else {
             setInValidClassname('');
         }
     }, [ErrorStates]);
 
     //Save and Sending Datas functions
-    const sendLoginData = () => {
+    const NewUserSendingDatas = () => {
         // // Send datas to Api
         setLoadingState(true); // activation Animation Component
-        fetch(`${url_to_api.localLink}/Authentification/Login`, {
+        fetch(`${url_to_api.localLink}/Users/New`, {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
                 'Content-type': 'application/json; charset=UTF-8',
+                Autorization: `Bearer ${localStorage.getItem('TokenUser')}`,
             },
-            body: JSON.stringify(LogRegStatesValues),
+            body: JSON.stringify(NewUserDatas),
         })
             .then((result) => {
                 if (result.ok) {
-                    result.json().then((datas) => {
-                        setAuthUser({
-                            ...datas.DataUser, //copy Authentification User datas
-                        });
-                        localStorage.setItem('TokenUser', datas.Token); // save token in localStorageSession
-
-                        // Checking type of Account for Redirection AothIndex pages
-                        switch (datas.typeAccount) {
-                            case 'Admin':
-                                Router.push('/AuthO/Admin');
-                                break;
-
-                            case 'NUser':
-                                Router.push('AuthO/AllUser');
-                                break;
-                        }
-                    });
+                    Router.push('/AuthO/Admin/Menages');
                 } else {
                     setLoadingState(false); // desactive Animation Component
                     result.json().then((datas) => {
@@ -106,53 +81,32 @@ const InputField = (datas: proprietyInput) => {
             });
     };
 
-    const sendRegisterData = () => {
-        //Send datas to api
-        setLoadingState(true); // Activation Animation Component
-        fetch(`${url_to_api.localLink}/Authentification/ActiveAccount`, {
-            method: 'POST',
-            headers: {
-                Accept: 'application/json',
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-            body: JSON.stringify(LogRegStatesValues),
-        })
-            .then((result) => {
-                setLoadingState(false); // after fetching data desactive Loading Component
-                if (result.ok) {
-                    result.json().then((datas) => {
-                        if (datas.Updating) {
-                            Router.push('/Login');
-                        }
-                    });
-                } else {
-                    result.json().then((datas) => {
-                        setMessageServer({
-                            content: datas.msg,
-                            stateMsg: true,
-                        });
-                    });
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
-
-    const datasOfLoginForm = (e: any, idField: number | undefined) => {
+    const datasOfNewUserForm = (e: any, idField: number | undefined) => {
         switch (idField) {
             case 0: {
-                setLogRegStatesValues({
-                    ...LogRegStatesValues,
+                setNewUserDatas({
+                    ...NewUserDatas,
+                    SecondeName: e.target.value,
+                });
+                break;
+            }
+
+            case 1: {
+                setNewUserDatas({
+                    ...NewUserDatas,
+                    name: e.target.value,
+                });
+                break;
+            }
+            case 2: {
+                setNewUserDatas({
+                    ...NewUserDatas,
                     email: e.target.value,
                 });
                 // check format mail
                 const mail = e.target.value;
-                if (
-                    mail.match(/@[a-zA-Z0-9]{5,}(.com$)/) ||
-                    mail.match(/^[+][0-9]{12}$/)
-                ) {
-                    if (LogRegStatesValues.passWord != '') {
+                if (mail.match(/@[a-zA-Z0-9]{5,}(.com$)/)) {
+                    if (NewUserDatas.tel != '') {
                         setErrorStates({
                             ...ErrorStates,
                             disabledBtn: false,
@@ -174,127 +128,32 @@ const InputField = (datas: proprietyInput) => {
                 }
                 break;
             }
-
-            case 1: {
-                setLogRegStatesValues({
-                    ...LogRegStatesValues,
-                    passWord: e.target.value,
+            case 3: {
+                setNewUserDatas({
+                    ...NewUserDatas,
+                    tel: e.target.value,
                 });
-
-                if (!ErrorStates.invalidEmail && e.target.value != '') {
-                    setErrorStates({
-                        ...ErrorStates,
-                        disabledBtn: false,
-                    });
-                } else {
-                    setErrorStates({
-                        ...ErrorStates,
-                        disabledBtn: true,
-                    });
-                }
-                break;
-            }
-        }
-    };
-
-    const dataOfRegisterForm = (e: any, idField: number | undefined) => {
-        switch (idField) {
-            case 0: {
-                setLogRegStatesValues({
-                    ...LogRegStatesValues,
-                    matricule: e.target.value,
-                });
-
-                // Error verifications
-                if (e.target.value.match(/^Hydro_[0-9a-z]{23}[0-9a-f]{1}$/)) {
-                    if (
-                        !ErrorStates.pswdAndCofirmPswd &&
-                        LogRegStatesValues.passWord != ''
-                    ) {
+                const tel = e.target.value;
+                if (tel.match(/^[+][0-9]{12}$/)) {
+                    if (NewUserDatas.email != '') {
                         setErrorStates({
                             ...ErrorStates,
                             disabledBtn: false,
-                            invalidMatricule: false,
+                            invalidTelInput: false,
                         });
                     } else {
                         setErrorStates({
                             ...ErrorStates,
                             disabledBtn: true,
-                            invalidMatricule: false,
+                            invalidTelInput: false,
                         });
                     }
                 } else {
                     setErrorStates({
                         ...ErrorStates,
                         disabledBtn: true,
-                        invalidMatricule: true,
+                        invalidTelInput: true,
                     });
-                }
-                break;
-            }
-            case 1: {
-                setLogRegStatesValues({
-                    ...LogRegStatesValues,
-                    passWord: e.target.value,
-                });
-
-                if (LogRegStatesValues.confirmpassWord === e.target.value) {
-                    if (
-                        !ErrorStates.invalidMatricule &&
-                        LogRegStatesValues.matricule != ''
-                    ) {
-                        setErrorStates({
-                            ...ErrorStates,
-                            disabledBtn: false,
-                            pswdAndCofirmPswd: false,
-                        });
-                    } else {
-                        setErrorStates({
-                            ...ErrorStates,
-                            disabledBtn: true,
-                            pswdAndCofirmPswd: false,
-                        });
-                    }
-                } else {
-                    setErrorStates({
-                        ...ErrorStates,
-                        disabledBtn: true,
-                        pswdAndCofirmPswd: true,
-                    });
-                }
-
-                break;
-            }
-
-            case 2: {
-                setLogRegStatesValues({
-                    ...LogRegStatesValues,
-                    confirmpassWord: e.target.value,
-                });
-                // Error verifications
-                if (LogRegStatesValues.passWord !== e.target.value) {
-                    setErrorStates({
-                        ...ErrorStates,
-                        disabledBtn: true,
-                        pswdAndCofirmPswd: true,
-                    });
-                } else {
-                    if (
-                        !ErrorStates.invalidMatricule &&
-                        LogRegStatesValues.matricule != ''
-                    ) {
-                        setErrorStates({
-                            ...ErrorStates,
-                            disabledBtn: false,
-                            pswdAndCofirmPswd: false,
-                        });
-                    } else {
-                        setErrorStates({
-                            ...ErrorStates,
-                            disabledBtn: true,
-                            pswdAndCofirmPswd: false,
-                        });
-                    }
                 }
                 break;
             }
@@ -321,9 +180,7 @@ const InputField = (datas: proprietyInput) => {
                             placeholder={datas.placeholderText}
                             id={datas.labelText}
                             onChange={(event) => {
-                                datas.form_name === 'Login'
-                                    ? datasOfLoginForm(event, datas.identity)
-                                    : dataOfRegisterForm(event, datas.identity);
+                                datasOfNewUserForm(event, datas.identity);
                             }}
                         />
                     </div>
@@ -335,11 +192,7 @@ const InputField = (datas: proprietyInput) => {
                     ) : (
                         <button
                             disabled={ErrorStates.disabledBtn}
-                            onClick={() => {
-                                datas.form_name === 'Login'
-                                    ? sendLoginData()
-                                    : sendRegisterData();
-                            }}
+                            onClick={() => NewUserSendingDatas()}
                             className={
                                 ErrorStates.disabledBtn
                                     ? 'disabledBtn'

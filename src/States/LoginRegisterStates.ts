@@ -33,6 +33,7 @@ export const errorLogRegisterForm = atom({
         invalidEmail: false,
         invalidMatricule: false,
         pswdAndCofirmPswd:false,
+        invalidTelInput:false
     }
 });
 

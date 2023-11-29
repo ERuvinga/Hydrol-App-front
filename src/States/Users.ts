@@ -13,10 +13,10 @@ const SelectedUser = atom({
 const NewUser = atom({
     key:"NewUser",
     default:{
-        name:"",
-        OtherName:"",
-        email:"",
-        tel:""
+        name:'',
+        SecondeName:'',
+        email:'',
+        tel:''
     }
 })
 
