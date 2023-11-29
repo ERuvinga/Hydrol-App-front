@@ -99,22 +99,28 @@ const Index = () => {
                                 </span>
                             </div>
                         ) : (
-                            <div className="containerCards ">
-                                {AllUserByAdmin.map(
-                                    (value: any, index: any) => (
-                                        <CardUsers
-                                            name={value.name}
-                                            email={value.email}
-                                            tel={value.tel}
-                                            picture={value.picture}
-                                            date={value.registerDate}
-                                            key={index}
-                                            id_Card={index}
-                                            idUser={value._id}
-                                            reloadFunction={setReloadUsers}
-                                            reloadState={ReloadUsers}
-                                        />
+                            <div className="containerCards">
+                                {AllUserByAdmin.length ? (
+                                    AllUserByAdmin.map(
+                                        (value: any, index: any) => (
+                                            <CardUsers
+                                                name={value.name}
+                                                email={value.email}
+                                                tel={value.tel}
+                                                picture={value.picture}
+                                                date={value.registerDate}
+                                                key={index}
+                                                id_Card={index}
+                                                idUser={value._id}
+                                                reloadFunction={setReloadUsers}
+                                                reloadState={ReloadUsers}
+                                            />
+                                        )
                                     )
+                                ) : (
+                                    <span className="notfundUser">
+                                        O`oops! Aucun utilisateur Trouvé
+                                    </span>
                                 )}
                             </div>
                         )}
