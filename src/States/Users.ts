@@ -18,10 +18,24 @@ const NewUser = atom({
         email:'',
         tel:''
     }
+});
+
+const compteurDatas = atom({
+    key:"ReloadDatasOfEsp",
+    default:[
+        {
+            litre:30,
+            vitesse:3
+        },{
+            litre:24,
+            vitesse:1
+        },
+    ]
 })
 
 export{
     AllUsers,
     SelectedUser,
-    NewUser
+    NewUser,
+    compteurDatas
 }
