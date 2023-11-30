@@ -5,6 +5,37 @@ const AllUsers = atom({
     default:null
 });
 
+const SelectedUser = atom({
+    key:"SelectedUser",
+    default:""
+});
+
+const NewUser = atom({
+    key:"NewUser",
+    default:{
+        name:'',
+        SecondeName:'',
+        email:'',
+        tel:''
+    }
+});
+
+const compteurDatas = atom({
+    key:"ReloadDatasOfEsp",
+    default:[
+        {
+            litre:30,
+            vitesse:3
+        },{
+            litre:24,
+            vitesse:1
+        },
+    ]
+})
+
 export{
-    AllUsers
+    AllUsers,
+    SelectedUser,
+    NewUser,
+    compteurDatas
 }

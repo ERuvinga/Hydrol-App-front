@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import AdminNav from '@/Components/commonComponents/NavAuthAdmin';
+import Link from 'next/link';
 
 //Atoms
 import { AllUsers } from '@/States/Users';
@@ -76,18 +77,11 @@ const Index = () => {
                     DisplayDatasOfUser"
                     >
                         <span className="RefreshDatas">
-                            <span
-                                className="PlusBtn"
-                                onClick={() => {
-                                    fetch('http://192.168.43.76')
-                                        .then((datas) => {
-                                            console.log(datas);
-                                        })
-                                        .catch((err) => console.log(err));
-                                }}
-                            >
-                                <PlusIcon className="Icone" />
-                            </span>
+                            <Link href="/AuthO/Admin/Menages/NewUser">
+                                <span className="PlusBtn">
+                                    <PlusIcon className="Icone" />
+                                </span>
+                            </Link>
                             <span
                                 className="ReloadBtn"
                                 onClick={() => {
@@ -105,19 +99,28 @@ const Index = () => {
                                 </span>
                             </div>
                         ) : (
-                            <div className="containerCards ">
-                                {AllUserByAdmin.map(
-                                    (value: any, index: any) => (
-                                        <CardUsers
-                                            name={value.name}
-                                            email={value.email}
-                                            tel={value.tel}
-                                            picture={value.picture}
-                                            date={value.registerDate}
-                                            key={index}
-                                            id_Card={index}
-                                        />
+                            <div className="containerCards">
+                                {AllUserByAdmin.length ? (
+                                    AllUserByAdmin.map(
+                                        (value: any, index: any) => (
+                                            <CardUsers
+                                                name={value.name}
+                                                email={value.email}
+                                                tel={value.tel}
+                                                picture={value.picture}
+                                                date={value.registerDate}
+                                                key={index}
+                                                id_Card={index}
+                                                idUser={value._id}
+                                                reloadFunction={setReloadUsers}
+                                                reloadState={ReloadUsers}
+                                            />
+                                        )
                                     )
+                                ) : (
+                                    <span className="notfundUser">
+                                        O`oops! Aucun utilisateur Trouvé
+                                    </span>
                                 )}
                             </div>
                         )}

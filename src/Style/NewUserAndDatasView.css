@@ -1,0 +1,169 @@
+/*Style for Create User PAge*/
+
+.TitleForm {
+    font-family: monoRegular;
+    color: #3fbdf1;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px;
+}
+
+.ContainerDatasOfComteurs {
+    margin-top: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 5px;
+    flex-wrap: wrap;
+}
+
+.Compteur {
+    margin: 20px 0;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    border: #e3dfdf solid 1px;
+    border-radius: 4px;
+    box-shadow: 0 0 2px #e3dfdf;
+}
+
+.Compteur .HeadeDatas {
+    padding: 8px 16px;
+    display: flex;
+    flex-direction: column;
+    font-family: monoRegular;
+    font-size: 0.8em;
+    color: #226785;
+    border-bottom: solid 1px #e3dfdf;
+}
+
+.Compteur .HeadeDatas .cibleH {
+    font-weight: bold;
+}
+
+.Compteur .DatasView {
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.DatasView .CircleContainer {
+    width: 200px;
+    height: 200px;
+    padding: 20px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    border: 4px #3fbdf1 solid;
+}
+
+.DatasView .CircleContainer .textDescr {
+    font-family: monoRegular;
+    text-align: center;
+    font-size: 0.8em;
+    color: #226785;
+}
+
+.DatasView .CircleContainer .Values {
+    font-size: 2em;
+    font-family: poppinBlack;
+    color: #3fbdf1;
+}
+
+.footerCard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 8px;
+    border-top: solid 1px #e3dfdf;
+}
+
+.footerCard .Datas {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    text-align: center;
+}
+
+.footerCard .Datas .value {
+    color: #226785;
+    font-weight: bold;
+    padding: 2px;
+    font-size: 0.9em;
+}
+
+.footerCard .Datas .description {
+    font-family: monoRegular;
+    color: #226785;
+    padding: 2px;
+    font-size: 0.8em;
+}
+
+.ContainerDatasSubComptr {
+    display: flex;
+    flex-direction: column;
+}
+
+.ContainerDatasSubComptr .stateVanne {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 0 16px;
+    border: #e3dfdf solid 1px;
+    border-radius: 4px;
+    box-shadow: 0 0 2px #e3dfdf;
+    padding: 8px 16px;
+}
+
+.ContainerDatasOfComteurs .stateVanne .title {
+    font-size: 0.9em;
+    color: #226785;
+    font-weight: bold;
+}
+
+.ContainerDatasOfComteurs .stateVanne .descr {
+    font-family: monoRegular;
+    font-size: 0.8em;
+    color: #226785;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ContainerDatasOfComteurs .descr .cible {
+    font-weight: bold;
+}
+
+.ContainerDatasOfComteurs .ContainerBtn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.ContainerDatasOfComteurs .btnElectrovanne {
+    width: 40%;
+    padding: 7px 0;
+    font-family: monoRegular;
+    border: none;
+    box-shadow: 0 0 2px #e3dfdf;
+    border-radius: 2px;
+}
+
+.ContainerDatasOfComteurs .Stopped {
+    background-color: #d93c3c;
+    color: #fff;
+}
+
+.ContainerDatasOfComteurs .Start {
+    color: #fff;
+    background-color: #2da950;
+}

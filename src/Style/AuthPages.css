@@ -162,6 +162,12 @@
     scale: (1.2);
 }
 
+.notfundUser {
+    color: #f13f3f;
+    font-family: monoRegular;
+    font-size: 0.8em;
+    font-weight: bold;
+}
 .LoadingUsers {
     height: 100%;
     display: flex;

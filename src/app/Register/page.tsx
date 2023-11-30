@@ -31,7 +31,7 @@ const Index = () => {
             <section className="body_log_reg">
                 {StateNotification.stateMsg && <Notification />}
                 <div className="bloc">
-                    <BackHome />
+                    <BackHome link="/" />
                     <section className="register_form">
                         <img src="/img/logo.jpg" className="logo" alt="logo" />
                         <InputField

@@ -12,7 +12,7 @@ export default function Home() {
     useEffect(() => {
         setTimeout(() => {
             setPreloadingState(false);
-        }, 5000);
+        }, 2000);
     }, []);
 
     return (

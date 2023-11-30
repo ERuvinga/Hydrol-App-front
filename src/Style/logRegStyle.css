@@ -216,6 +216,16 @@
     font-family: monoRegular;
 }
 
+.invalidTelInput::after {
+    content: 'Format Tel Invalid';
+    width: 90%;
+    display: block;
+    margin: auto;
+
+    color: rgb(223, 70, 70);
+    font-size: 0.6em;
+    font-family: monoRegular;
+}
 .groupe_form .log_reg_input:focus {
     outline: none;
     border-color: #226785;
@@ -228,6 +238,10 @@
 }
 
 .groupe_form .invalidEmailInput:focus {
+    outline: none;
+    border-color: rgb(223, 70, 70);
+}
+.groupe_form .invalidTelInput:focus {
     outline: none;
     border-color: rgb(223, 70, 70);
 }
@@ -316,7 +330,8 @@
     .SelectionTypeCompte,
     .invalidEmail::after,
     .invalidMatricule::after,
-    .invalidPassword::after {
+    .invalidPassword::after,
+    .invalidTelInput:after {
         width: 100%;
     }
 

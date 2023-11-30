@@ -200,6 +200,7 @@
     align-items: center;
     justify-content: flex-end;
     margin: 0 10px 10px 0;
+    gap: 10px;
 }
 
 .Card .Btn {
@@ -208,6 +209,16 @@
     justify-content: center;
     padding: 4px 25px;
     background-color: #3fbdf1;
+    border-radius: 2px;
+    box-shadow: 0 0 2px 0 #f9f9fc;
+}
+.Card .btnDeleted {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 25px;
+    background-color: #f13f3f;
+    border: none;
     border-radius: 2px;
     box-shadow: 0 0 2px 0 #f9f9fc;
 }

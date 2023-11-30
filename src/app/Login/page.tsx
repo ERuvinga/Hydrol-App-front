@@ -28,7 +28,7 @@ const Index = () => {
     return (
         <>
             <section className="body_log_reg">
-                <BackHome />
+                <BackHome link="/" />
                 {StateNotification.stateMsg && <Notification />}
                 <div className="bloc">
                     <section className="login_form">
