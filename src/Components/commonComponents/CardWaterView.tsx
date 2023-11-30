@@ -3,7 +3,8 @@ interface waterDatas {
     nameUser: string;
     litres: number;
     ecoul: number;
-    stateElectroVanne: boolean;
+    stateElectroVanne?: boolean;
+    typeAccount: string;
 }
 
 const CardWater = (datas: waterDatas) => {
@@ -45,7 +46,7 @@ const CardWater = (datas: waterDatas) => {
                 </div>
             </div>
             <div className=" stateVanne">
-                <span className="title ">Eta de l`electro Vanne</span>
+                <span className="title ">Status de l`electro Vanne</span>
                 <span className="descr">
                     <span>ElectroVanne :</span>
                     <span className="cible">
@@ -53,15 +54,17 @@ const CardWater = (datas: waterDatas) => {
                     </span>
                 </span>
                 <div className="ContainerBtn">
-                    <button
-                        className={
-                            datas.stateElectroVanne
-                                ? 'btnElectrovanne Stopped'
-                                : 'btnElectrovanne Start'
-                        }
-                    >
-                        {datas.stateElectroVanne ? 'Stoper' : 'Alimenter'}
-                    </button>
+                    {datas.typeAccount === 'Admin' ? (
+                        <button
+                            className={
+                                datas.stateElectroVanne
+                                    ? 'btnElectrovanne Stopped'
+                                    : 'btnElectrovanne Start'
+                            }
+                        >
+                            {datas.stateElectroVanne ? 'Stoper' : 'Alimenter'}
+                        </button>
+                    ) : null}
                 </div>
             </div>
         </section>

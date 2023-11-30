@@ -10,16 +10,18 @@ import AuthNav from '@/Components/commonComponents/NavAuthUser';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useRecoilState, useRecoilValue } from 'recoil';
+import CardWater from '@/Components/commonComponents/CardWaterView';
 
 const Index = () => {
     // states and atoms
     const [loadingPage, setLoadingPage] = useState(false);
+    const [ConnectionToEsp, setConnectionToEsp] = useState(false);
     const [DatasOfAuthUser, setDatasOfAuthUser]: any = useRecoilState(AuthUser);
     const Api_Url = useRecoilValue(Link_toApi);
 
     //initializ States
     const Router = useRouter();
-
+    const timeDatas = new Date(Date.now());
     useEffect(() => {
         // check if token of user is valid
         withAuth(
@@ -43,12 +45,24 @@ const Index = () => {
                         image={DatasOfAuthUser.picture}
                     />
                     <section>
-                        <div className="LoaderPage">
-                            <Loading WhiteOrBlack={false} />
-                            <span className="loadingText">
-                                Connexion au Sous-Compteur d`eau...
-                            </span>
-                        </div>
+                        {ConnectionToEsp ? (
+                            <div className="LoaderPage">
+                                <Loading WhiteOrBlack={false} />
+                                <span className="loadingText">
+                                    Connexion au Sous-Compteur d`eau...
+                                </span>
+                            </div>
+                        ) : (
+                            <section className=" ContainerDatasOfComteurs">
+                                <CardWater
+                                    idAppart={0}
+                                    litres={20}
+                                    ecoul={2}
+                                    typeAccount={DatasOfAuthUser.typeAccount}
+                                    nameUser={DatasOfAuthUser.name}
+                                />
+                            </section>
+                        )}
                     </section>
                 </main>
             ) : (

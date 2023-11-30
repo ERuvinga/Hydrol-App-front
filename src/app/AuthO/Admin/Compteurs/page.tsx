@@ -23,7 +23,7 @@ const Index = () => {
     const [AllUserByAdmin, setAllUserByAdmin]: any = useRecoilState(AllUsers);
     const [ConsumDatas, setConsumDatas]: any = useRecoilState(compteurDatas);
     const Api_Url = useRecoilValue(Link_toApi);
-
+    console.log(DatasOfAuthUser);
     //initializ States
     const Router = useRouter();
     const timeDatas = new Date(Date.now());
@@ -138,6 +138,9 @@ const Index = () => {
                                                     ConsumDatas[index].vitesse
                                                 }
                                                 stateElectroVanne={index}
+                                                typeAccount={
+                                                    DatasOfAuthUser.typeAccount
+                                                }
                                             />
                                         )
                                     )}
