@@ -12,7 +12,7 @@
 .ContainerDatasOfComteurs {
     margin-top: 80px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     gap: 15px;
     padding: 5px;
@@ -139,8 +139,14 @@
     justify-content: space-between;
 }
 
-.ContainerDatasOfComteurs .descr .cible {
+.ContainerDatasOfComteurs .descr .cibleTrue {
     font-weight: bold;
+    color: #2da950;
+}
+
+.ContainerDatasOfComteurs .descr .cibleFalse {
+    font-weight: bold;
+    color: #d93c3c;
 }
 
 .ContainerDatasOfComteurs .ContainerBtn {
@@ -166,4 +172,10 @@
 .ContainerDatasOfComteurs .Start {
     color: #fff;
     background-color: #2da950;
+}
+
+.ContainerDatasOfComteurs .Start:hover,
+.ContainerDatasOfComteurs .Stopped:hover {
+    cursor: pointer;
+    opacity: 0.8;
 }

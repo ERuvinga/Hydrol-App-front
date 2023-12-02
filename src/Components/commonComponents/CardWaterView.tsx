@@ -1,3 +1,8 @@
+import { urlToEsp8266 } from '@/States/Users';
+import { DateReadDatas } from '@/app/Lib/Date';
+import { useEffect, useState } from 'react';
+import { useRecoilValue } from 'recoil';
+
 interface waterDatas {
     idAppart: number;
     nameUser: string;
@@ -5,10 +10,35 @@ interface waterDatas {
     ecoul: number;
     stateElectroVanne?: boolean;
     typeAccount: string;
+    timeDatas: number;
 }
 
 const CardWater = (datas: waterDatas) => {
-    const Time = new Date(Date.now());
+    const [StateVanne, setStateVanne] = useState(0);
+    const linkToEsp = useRecoilValue(urlToEsp8266);
+
+    useEffect(() => {
+        fetch(`${linkToEsp}/${datas.idAppart}/ReadStateVanne`)
+            .then((datas) => {
+                datas.text().then((responseEsp) => {
+                    const Datas = responseEsp.split(':');
+                    //setStateVanne(parseInt(Datas[1]));
+                });
+            })
+            .catch((error) => console.log(error));
+    }, []);
+
+    const ChangeStateVanne = () => {
+        fetch(`${linkToEsp}/${datas.idAppart}/StateVanne`)
+            .then((datas) => {
+                datas.text().then((responseEsp) => {
+                    const Datas = responseEsp.split(':');
+                    setStateVanne(parseInt(Datas[1]));
+                });
+            })
+            .catch((error) => console.log(error));
+    };
+
     return (
         <section className="ContainerDatasSubComptr ">
             <div className="Compteur ">
@@ -39,7 +69,7 @@ const CardWater = (datas: waterDatas) => {
                     </div>
                     <div className=" Datas">
                         <span className="value ">
-                            {`${Time.getHours()}h${Time.getHours()}`}
+                            {DateReadDatas(datas.timeDatas)}
                         </span>
                         <span className=" description">Aujour`hui</span>
                     </div>
@@ -49,20 +79,23 @@ const CardWater = (datas: waterDatas) => {
                 <span className="title ">Status de l`electro Vanne</span>
                 <span className="descr">
                     <span>ElectroVanne :</span>
-                    <span className="cible">
-                        {datas.stateElectroVanne ? 'Actif' : 'Stoppé'}
+                    <span className={StateVanne ? 'cibleTrue' : 'cibleFalse'}>
+                        {StateVanne ? 'Allumé' : 'Stoppé'}
                     </span>
                 </span>
                 <div className="ContainerBtn">
                     {datas.typeAccount === 'Admin' ? (
                         <button
+                            onClick={() => {
+                                ChangeStateVanne();
+                            }}
                             className={
-                                datas.stateElectroVanne
+                                StateVanne
                                     ? 'btnElectrovanne Stopped'
                                     : 'btnElectrovanne Start'
                             }
                         >
-                            {datas.stateElectroVanne ? 'Stoper' : 'Alimenter'}
+                            {StateVanne ? 'Stoper' : 'Alimenter'}
                         </button>
                     ) : null}
                 </div>

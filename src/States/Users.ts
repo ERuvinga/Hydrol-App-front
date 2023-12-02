@@ -20,15 +20,20 @@ const NewUser = atom({
     }
 });
 
+const urlToEsp8266 = atom({
+    key:"urlToEsp8266",
+    default:"http://192.168.43.76"
+});
+
 const compteurDatas = atom({
     key:"ReloadDatasOfEsp",
     default:[
         {
-            litre:30,
-            vitesse:3
+            litre:0,
+            vitesse:0
         },{
-            litre:24,
-            vitesse:1
+            litre:0,
+            vitesse:0
         },
     ]
 })
@@ -37,5 +42,6 @@ export{
     AllUsers,
     SelectedUser,
     NewUser,
-    compteurDatas
+    compteurDatas,
+    urlToEsp8266
 }
