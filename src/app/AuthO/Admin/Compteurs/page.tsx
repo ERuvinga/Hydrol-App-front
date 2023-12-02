@@ -10,9 +10,10 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import AdminNav from '@/Components/commonComponents/NavAuthAdmin';
-import { compteurDatas } from '@/States/Users';
+import { compteurDatas, urlToEsp8266 } from '@/States/Users';
 import { AllUsers } from '@/States/Users';
 import CardWater from '@/Components/commonComponents/CardWaterView';
+import { savingDataOfEsp } from '@/app/Lib/datasEsp';
 
 const Index = () => {
     // states and atoms
@@ -23,7 +24,8 @@ const Index = () => {
     const [AllUserByAdmin, setAllUserByAdmin]: any = useRecoilState(AllUsers);
     const [ConsumDatas, setConsumDatas]: any = useRecoilState(compteurDatas);
     const Api_Url = useRecoilValue(Link_toApi);
-    console.log(DatasOfAuthUser);
+    const Esp_Url = useRecoilValue(urlToEsp8266);
+
     //initializ States
     const Router = useRouter();
     const timeDatas = new Date(Date.now());
@@ -38,6 +40,20 @@ const Index = () => {
             DatasOfAuthUser,
             Router
         );
+
+        // fetching Datas of Esp8266
+        setInterval(() => {
+            fetch(`${Esp_Url}/ReadDatas`)
+                .then((datas) => {
+                    datas.text().then((responseEsp) => {
+                        const Datas = responseEsp.split('Ap2:');
+                        savingDataOfEsp(Datas, setConsumDatas);
+                        setConnectionToEsp(false);
+                    });
+                })
+                .catch((error) => console.log(error));
+            console.log('Searching datas of Esp');
+        }, 10000);
     }, []);
 
     useEffect(() => {
@@ -58,9 +74,6 @@ const Index = () => {
             .catch((er: any) => console.log(er));
     }, []);
 
-    useEffect(() => {
-        setConnectionToEsp(false);
-    }, [ReloadDatasOfEsp]);
     return (
         <>
             {loadingPage || DatasOfAuthUser ? (
@@ -80,7 +93,7 @@ const Index = () => {
                                 </span>
                             </div>
                         ) : (
-                            <section className=" ContainerDatasOfComteurs">
+                            <section className="ContainerDatasOfComteurs">
                                 <div className="Compteur ">
                                     <div className="HeadeDatas">
                                         <span>

@@ -12,7 +12,7 @@
 .ContainerDatasOfComteurs {
     margin-top: 80px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     gap: 15px;
     padding: 5px;
