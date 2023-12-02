@@ -26,11 +26,11 @@ export const LeadingFoot = () => {
         <section className={style.foot}>
             <div className={style.footerDatas}>
                 <PhoneIcon className={style.fIcones} />
-                <span>0973668210</span>
+                <span>0992041506</span>
             </div>
             <div className={style.footerDatas}>
                 <AtSymbolIcon className={style.fIcones} />
-                <span>ruvingaelie@gmail.com</span>
+                <span>esaietsongo333@gmail.com</span>
             </div>
             <div className={style.footerDatas}>
                 <CloudIcon className={style.fIcones} />
