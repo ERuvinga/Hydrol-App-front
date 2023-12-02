@@ -56,7 +56,6 @@ const Index = () => {
                     });
                 })
                 .catch((error) => console.log(error));
-            console.log('Searching datas of Esp');
         }, 5000);
     }, []);
 

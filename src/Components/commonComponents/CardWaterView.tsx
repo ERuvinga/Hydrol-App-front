@@ -21,7 +21,6 @@ const CardWater = (datas: waterDatas) => {
         fetch(`${linkToEsp}/${datas.idAppart}/ReadStateVanne`)
             .then((datas) => {
                 datas.text().then((responseEsp) => {
-                    console.log(responseEsp);
                     setStateVanne(parseInt(responseEsp));
                 });
             })
