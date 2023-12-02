@@ -14,15 +14,15 @@ interface waterDatas {
 }
 
 const CardWater = (datas: waterDatas) => {
-    const [StateVanne, setStateVanne] = useState(0);
+    const [StateVanne, setStateVanne] = useState(1);
     const linkToEsp = useRecoilValue(urlToEsp8266);
 
     useEffect(() => {
         fetch(`${linkToEsp}/${datas.idAppart}/ReadStateVanne`)
             .then((datas) => {
                 datas.text().then((responseEsp) => {
-                    const Datas = responseEsp.split(':');
-                    //setStateVanne(parseInt(Datas[1]));
+                    console.log(responseEsp);
+                    setStateVanne(parseInt(responseEsp));
                 });
             })
             .catch((error) => console.log(error));
@@ -71,7 +71,7 @@ const CardWater = (datas: waterDatas) => {
                         <span className="value ">
                             {DateReadDatas(datas.timeDatas)}
                         </span>
-                        <span className=" description">Aujour`hui</span>
+                        <span className=" description">Aujourd`hui</span>
                     </div>
                 </div>
             </div>

@@ -106,14 +106,13 @@ const monthToString = (month: number) =>{
 };
 
 const LastMessageTime = (timeOfLastMsg:number)=>{
-
     return false; 
 };
 
 const DateReadDatas = (DateNumber: number)=> {
 
-    const userLastOnlineTime = new Date(DateNumber);
-    const dataToDisplay = `${userLastOnlineTime.getDate()} ${monthToString(userLastOnlineTime.getMonth())} ${userLastOnlineTime.getFullYear()} à ${userLastOnlineTime.getHours()}:${userLastOnlineTime.getMinutes()}`;
+    const LastLoadingDatas = new Date(DateNumber);
+    const dataToDisplay = `${LastLoadingDatas.getDate()} ${monthToString(LastLoadingDatas.getMonth())} à ${LastLoadingDatas.getHours()}H${LastLoadingDatas.getMinutes()}':${LastLoadingDatas.getSeconds()}"`;
 
     return dataToDisplay;
 };
