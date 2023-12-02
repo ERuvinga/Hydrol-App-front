@@ -14,6 +14,7 @@ import { compteurDatas, urlToEsp8266 } from '@/States/Users';
 import { AllUsers } from '@/States/Users';
 import CardWater from '@/Components/commonComponents/CardWaterView';
 import { savingDataOfEsp } from '@/app/Lib/datasEsp';
+import { DateReadDatas } from '@/app/Lib/Date';
 
 const Index = () => {
     // states and atoms
@@ -25,10 +26,12 @@ const Index = () => {
     const [ConsumDatas, setConsumDatas]: any = useRecoilState(compteurDatas);
     const Api_Url = useRecoilValue(Link_toApi);
     const Esp_Url = useRecoilValue(urlToEsp8266);
+    const [timeDatas, setTimeDatas] = useState(Date.now());
 
     //initializ States
     const Router = useRouter();
-    const timeDatas = new Date(Date.now());
+    const TotalVolume = ConsumDatas[0].litre + ConsumDatas[1].litre;
+    const TotalWaterFlow = `${ConsumDatas[0].vitesse}-${ConsumDatas[1].vitesse}`;
 
     useEffect(() => {
         // check if token of user is valid
@@ -49,11 +52,12 @@ const Index = () => {
                         const Datas = responseEsp.split('Ap2:');
                         savingDataOfEsp(Datas, setConsumDatas);
                         setConnectionToEsp(false);
+                        setTimeDatas(Date.now());
                     });
                 })
                 .catch((error) => console.log(error));
             console.log('Searching datas of Esp');
-        }, 10000);
+        }, 5000);
     }, []);
 
     useEffect(() => {
@@ -115,21 +119,21 @@ const Index = () => {
                                                 Eau Consomée en Litre(s)
                                             </span>
                                             <span className="Values">
-                                                {ConsumDatas[0].litre +
-                                                    ConsumDatas[1].litre}
+                                                {Math.round(TotalVolume * 10) /
+                                                    10}
                                             </span>
                                         </div>
                                     </div>
                                     <div className="footerCard">
                                         <div className=" Datas">
-                                            <span className=" value">{`${ConsumDatas[0].vitesse}-${ConsumDatas[1].vitesse} litre(s)/min`}</span>
+                                            <span className=" value">{`${TotalWaterFlow} litre(s)/min`}</span>
                                             <span className=" description">
                                                 Ecoulement
                                             </span>
                                         </div>
                                         <div className=" Datas">
                                             <span className="value ">
-                                                {`${timeDatas.getHours()}h${timeDatas.getHours()}`}
+                                                {DateReadDatas(timeDatas)}
                                             </span>
                                             <span className=" description">
                                                 Aujour`hui
@@ -141,6 +145,7 @@ const Index = () => {
                                     {AllUserByAdmin.map(
                                         (value: any, index: any) => (
                                             <CardWater
+                                                timeDatas={timeDatas}
                                                 key={index}
                                                 idAppart={index + 1}
                                                 nameUser={value.name}

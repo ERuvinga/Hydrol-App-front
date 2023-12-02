@@ -60,6 +60,7 @@ const Index = () => {
                                     ecoul={2}
                                     typeAccount={DatasOfAuthUser.typeAccount}
                                     nameUser={DatasOfAuthUser.name}
+                                    timeDatas={0}
                                 />
                             </section>
                         )}
