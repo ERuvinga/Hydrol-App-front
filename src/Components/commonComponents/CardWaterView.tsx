@@ -8,13 +8,13 @@ interface waterDatas {
     nameUser: string;
     litres: number;
     ecoul: number;
-    stateElectroVanne?: boolean;
     typeAccount: string;
     timeDatas: number;
+    stateVanne?: number;
 }
 
 const CardWater = (datas: waterDatas) => {
-    const [StateVanne, setStateVanne] = useState(1);
+    const [StateVanne, setStateVanne] = useState(0);
     const linkToEsp = useRecoilValue(urlToEsp8266);
 
     useEffect(() => {
@@ -25,8 +25,7 @@ const CardWater = (datas: waterDatas) => {
                 });
             })
             .catch((error) => console.log(error));
-    }, []);
-
+    });
     const ChangeStateVanne = () => {
         fetch(`${linkToEsp}/${datas.idAppart}/StateVanne`)
             .then((datas) => {
@@ -78,8 +77,14 @@ const CardWater = (datas: waterDatas) => {
                 <span className="title ">Status de l`electro Vanne</span>
                 <span className="descr">
                     <span>ElectroVanne :</span>
-                    <span className={StateVanne ? 'cibleTrue' : 'cibleFalse'}>
-                        {StateVanne ? 'Allumé' : 'Stoppé'}
+                    <span
+                        className={
+                            datas.stateVanne || StateVanne
+                                ? 'cibleTrue'
+                                : 'cibleFalse'
+                        }
+                    >
+                        {datas.stateVanne || StateVanne ? 'Allumé' : 'Stoppé'}
                     </span>
                 </span>
                 <div className="ContainerBtn">

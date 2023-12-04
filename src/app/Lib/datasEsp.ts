@@ -1,6 +1,6 @@
 
 const ArroundBy10 = (floatNumber:string) =>{
-    return Math.round((parseFloat(floatNumber)*10))/10;
+    return Math.round((parseFloat(floatNumber)*100))/100;
 }
 
 const savingDataOfEsp =(datas:String[], RecoilFunctionSaving:any)=>{
@@ -19,6 +19,17 @@ const savingDataOfEsp =(datas:String[], RecoilFunctionSaving:any)=>{
     ]);
 }
 
+const savingDataOfSubComptEsp =(datas:string[], RecoilFunctionSaving:any)=>{
+
+    RecoilFunctionSaving(
+        {
+            vitesse: ArroundBy10(datas[0]),
+            litre: ArroundBy10(datas[1]),
+        }
+    );
+}
+
 export {
-    savingDataOfEsp
+    savingDataOfEsp,
+    savingDataOfSubComptEsp
 }

@@ -146,15 +146,18 @@ const Index = () => {
                                             <CardWater
                                                 timeDatas={timeDatas}
                                                 key={index}
-                                                idAppart={index + 1}
+                                                idAppart={value.idCompteur}
                                                 nameUser={value.name}
                                                 litres={
-                                                    ConsumDatas[index].litre
+                                                    ConsumDatas[
+                                                        value.idCompteur - 1
+                                                    ].litre
                                                 }
                                                 ecoul={
-                                                    ConsumDatas[index].vitesse
+                                                    ConsumDatas[
+                                                        value.idCompteur - 1
+                                                    ].vitesse
                                                 }
-                                                stateElectroVanne={index}
                                                 typeAccount={
                                                     DatasOfAuthUser.typeAccount
                                                 }

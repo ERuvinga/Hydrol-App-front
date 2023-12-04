@@ -11,17 +11,47 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import CardWater from '@/Components/commonComponents/CardWaterView';
+import { urlToEsp8266, SubCompter } from '@/States/Users';
+import { savingDataOfSubComptEsp } from '@/app/Lib/datasEsp';
 
 const Index = () => {
     // states and atoms
     const [loadingPage, setLoadingPage] = useState(false);
-    const [ConnectionToEsp, setConnectionToEsp] = useState(false);
+    const [ConnectionToEsp, setConnectionToEsp] = useState(true);
     const [DatasOfAuthUser, setDatasOfAuthUser]: any = useRecoilState(AuthUser);
+    const [DatasSubComptr, setDatasSubComptr]: any = useRecoilState(SubCompter);
     const Api_Url = useRecoilValue(Link_toApi);
-
+    const Esp_Url = useRecoilValue(urlToEsp8266);
+    const [timeDatas, setTimeDatas] = useState(Date.now());
+    const [VannesState, setStateVannes] = useState(1);
     //initializ States
     const Router = useRouter();
-    const timeDatas = new Date(Date.now());
+
+    useEffect(() => {
+        if (DatasOfAuthUser) {
+            setInterval(() => {
+                fetch(`${Esp_Url}/${DatasOfAuthUser.idCompteur}/ReadStateVanne`)
+                    .then((datas) => {
+                        datas.text().then((responseEsp) => {
+                            setStateVannes(parseInt(responseEsp));
+                        });
+                    })
+                    .catch((error) => console.log(error));
+
+                fetch(`${Esp_Url}/${DatasOfAuthUser.idCompteur}/ReadDatas`)
+                    .then((datas) => {
+                        datas.text().then((responseEsp) => {
+                            const Datas = responseEsp.split('_');
+                            savingDataOfSubComptEsp(Datas, setDatasSubComptr);
+                            setConnectionToEsp(false);
+                            setTimeDatas(Date.now());
+                        });
+                    })
+                    .catch((error) => console.log(error));
+            }, 5000);
+        }
+    }, [DatasOfAuthUser]);
+
     useEffect(() => {
         // check if token of user is valid
         withAuth(
@@ -32,7 +62,6 @@ const Index = () => {
             DatasOfAuthUser,
             Router
         );
-        console.log(DatasOfAuthUser);
     }, []);
     return (
         <>
@@ -55,12 +84,13 @@ const Index = () => {
                         ) : (
                             <section className=" ContainerDatasOfComteurs">
                                 <CardWater
-                                    idAppart={0}
-                                    litres={20}
-                                    ecoul={2}
+                                    idAppart={DatasOfAuthUser.idCompteur}
+                                    litres={DatasSubComptr.litre}
+                                    ecoul={DatasSubComptr.vitesse}
                                     typeAccount={DatasOfAuthUser.typeAccount}
                                     nameUser={DatasOfAuthUser.name}
-                                    timeDatas={0}
+                                    timeDatas={timeDatas}
+                                    stateVanne={VannesState}
                                 />
                             </section>
                         )}
