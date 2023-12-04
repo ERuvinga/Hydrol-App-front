@@ -56,6 +56,23 @@ const withAuth = (api_link:any, Localtoken:any, setStatePage:any, setUaseAuth:an
         })
 }
 
+const DeletingUserAccount = (linkToApi: any, IdOfDelUser:String, stateReloadingPage:boolean|undefined, SetTateReloadingPAge:any)=>{
+                            fetch(
+                            `${linkToApi}/Users/Delete/${IdOfDelUser}`,
+                            {
+                                method: 'DELETE',
+                                headers: {
+                                    Autorization: `Bearer ${localStorage.getItem(
+                                        'TokenUser'
+                                    )}`,
+                                },
+                            }
+                        ).then(() => {
+                            SetTateReloadingPAge(!stateReloadingPage);
+                        });
+}
+
 export {
-    withAuth
+    withAuth,
+    DeletingUserAccount
 }

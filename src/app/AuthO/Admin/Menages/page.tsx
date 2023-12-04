@@ -16,12 +16,14 @@ import Link from 'next/link';
 import { AllUsers } from '@/States/Users';
 import { ArrowPathIcon, PlusIcon } from '@heroicons/react/24/outline';
 import CardUsers from '@/Components/commonComponents/cardUser';
+import WrapperCompnent from '@/Components/commonComponents/wrapperComponent';
 
 const Index = () => {
     // states and atoms
     const [loadingPage, setLoadingPage] = useState(false);
     const [searchUsers, setSearchUsers] = useState(true);
     const [ReloadUsers, setReloadUsers] = useState(false);
+    const [ConfirmDelete, setConfirmDelete] = useState(false);
     const [DatasOfAuthUser, setDatasOfAuthUser]: any = useRecoilState(AuthUser);
     const [AllUserByAdmin, setAllUserByAdmin]: any = useRecoilState(AllUsers);
     const Api_Url = useRecoilValue(Link_toApi);
@@ -113,8 +115,9 @@ const Index = () => {
                                                 key={index}
                                                 id_Card={index}
                                                 idUser={value._id}
-                                                reloadFunction={setReloadUsers}
-                                                reloadState={ReloadUsers}
+                                                SetConfirmDelete={
+                                                    setConfirmDelete
+                                                }
                                             />
                                         )
                                     )
@@ -133,6 +136,17 @@ const Index = () => {
                     <span className="loadingText">Chargement ...</span>
                 </div>
             )}
+            <>
+                {ConfirmDelete ? (
+                    <WrapperCompnent
+                        text={'Voulez-vous Supprimer cet compte?'}
+                        Action={'deleting'}
+                        setStatePopup={setConfirmDelete}
+                        seteStateReloadingPage={setReloadUsers}
+                        reloadingPageState={ReloadUsers}
+                    />
+                ) : null}
+            </>
         </>
     );
 };

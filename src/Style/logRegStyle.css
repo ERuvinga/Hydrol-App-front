@@ -274,6 +274,7 @@
 .form_send_btn:hover {
     transform: scale(1.005);
     opacity: 0.9;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 850px) {
