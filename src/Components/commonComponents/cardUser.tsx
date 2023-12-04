@@ -1,7 +1,6 @@
+import { IdOfdeletingUser } from '@/States/Users';
 import { Cog6ToothIcon, TrashIcon } from '@heroicons/react/24/outline';
-import { Link_toApi } from '@/States/LoginRegisterStates';
-import { SelectedUser } from '@/States/Users';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 
 interface User {
     name: string;
@@ -11,13 +10,11 @@ interface User {
     date: number;
     id_Card: number;
     idUser: string;
-    reloadFunction: any;
-    reloadState: any;
+    SetConfirmDelete: any;
 }
 
 const CardUsers = (datas: User) => {
-    const api_link: any = useRecoilValue(Link_toApi);
-    const IdOffDelUser = datas.idUser;
+    const SetIdOfDeletedUser = useSetRecoilState(IdOfdeletingUser);
 
     return (
         <div className="Card">
@@ -49,19 +46,8 @@ const CardUsers = (datas: User) => {
                 <button
                     className="btnDeleted"
                     onClick={() => {
-                        fetch(
-                            `${api_link.localLink}/Users/Delete/${IdOffDelUser}`,
-                            {
-                                method: 'DELETE',
-                                headers: {
-                                    Autorization: `Bearer ${localStorage.getItem(
-                                        'TokenUser'
-                                    )}`,
-                                },
-                            }
-                        ).then(() => {
-                            datas.reloadFunction(!datas.reloadState);
-                        });
+                        datas.SetConfirmDelete(true);
+                        SetIdOfDeletedUser(datas.idUser);
                     }}
                 >
                     <TrashIcon className="Icone" />

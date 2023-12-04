@@ -10,6 +10,11 @@ const SelectedUser = atom({
     default:""
 });
 
+const IdOfdeletingUser = atom({
+    key:"IdOfdeletingUser",
+    default:""
+});
+
 const NewUser = atom({
     key:"NewUser",
     default:{
@@ -52,5 +57,6 @@ export{
     NewUser,
     compteurDatas,
     urlToEsp8266,
-    SubCompter
+    SubCompter,
+    IdOfdeletingUser
 }
