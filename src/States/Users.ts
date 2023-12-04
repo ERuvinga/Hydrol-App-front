@@ -36,6 +36,14 @@ const compteurDatas = atom({
             vitesse:0
         },
     ]
+});
+
+const SubCompter = atom({
+    key:"SubCompter",
+    default:{
+        vitesse:0,
+        litre:0
+    }
 })
 
 export{
@@ -43,5 +51,6 @@ export{
     SelectedUser,
     NewUser,
     compteurDatas,
-    urlToEsp8266
+    urlToEsp8266,
+    SubCompter
 }

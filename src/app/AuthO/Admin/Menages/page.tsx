@@ -54,6 +54,7 @@ const Index = () => {
                 if (datas.ok) {
                     datas.json().then((datasOfAllusers: any) => {
                         setAllUserByAdmin(datasOfAllusers.AllUsers);
+                        console.log(datasOfAllusers.AllUsers);
                         setTimeout(() => {
                             setSearchUsers(false);
                         }, 1500);
