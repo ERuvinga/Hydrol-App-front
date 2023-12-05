@@ -55,7 +55,7 @@ const CardWater = (datas: waterDatas) => {
                 <div className=" DatasView">
                     <div className="CircleContainer">
                         <span className="textDescr">
-                            Eau Consomée en Litre(s)
+                            Eau Consomée en Centilitre(s)
                         </span>
                         <span className="Values">{datas.litres}</span>
                     </div>

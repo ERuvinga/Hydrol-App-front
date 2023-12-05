@@ -130,7 +130,17 @@
     gap: 13px;
 }
 
-.RefreshDatas .Icone {
+.ReturnToMain {
+    width: 85%;
+    margin: 10px auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 13px;
+}
+
+.RefreshDatas .Icone,
+.ReturnToMain .Icone {
     width: 20px;
 }
 
@@ -155,13 +165,23 @@
     transition: all 0.5s ease-in-out;
 }
 
+.ReturnMainPageBtn {
+    display: flex;
+    align-items: center;
+    padding: 5px 25px;
+    background-color: transparent;
+    color: #f13f3f;
+    border-radius: 3px;
+    border: #f13f3f 1px solid;
+    transition: all 0.5s ease-in-out;
+}
 .ReloadBtn:hover,
-.PlusBtn:hover {
+.PlusBtn:hover,
+.ReturnMainPageBtn:hover {
     cursor: pointer;
     opacity: 0.8;
     scale: (1.2);
 }
-
 .notfundUser {
     color: #f13f3f;
     font-family: monoRegular;
@@ -185,6 +205,106 @@
 
 .Card {
     width: 250px;
+}
+.SateOut {
+    margin: auto;
+    min-width: 250px;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5px;
+    border: 2px solid #e3dfdf;
+    gap: 5px;
+}
+
+.SateOut .title {
+    padding: 4px;
+    background-color: #3fbdf1;
+    color: #fff;
+    text-align: center;
+    font-family: monoRegular;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+.SateOut .ContainerIdUser {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border: #e3dfdf solid 1px;
+}
+
+.SateOut .containerDatasFacture,
+.SateOutContainerConsommation {
+    display: flex;
+    flex-direction: column;
+    border: #e3dfdf solid 1px;
+}
+
+.SateOut .ContainerIdUser .AdminUser,
+.SateOut .ContainerIdUser .SubComptr {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    color: #08181f;
+    font-size: 0.8em;
+    padding: 3px;
+    margin: 2px 0;
+}
+
+.SateOut .ContainerIdUser .SubComptr {
+    text-align: right;
+}
+
+.SateOut .idFacture {
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.SateOut .cible {
+    color: #226785;
+    font-style: italic;
+    font-family: monoRegular;
+}
+
+.SateOut .noStateOut {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px 8px;
+    color: #08181f;
+    font-size: 0.8em;
+}
+
+.SateOut .containerprintBtn {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 5px 8px;
+}
+
+.SateOut .printStateOutBtn {
+    width: 100px;
+    padding: 6px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3fbdf1;
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0 0 3px #e3dfdf;
+}
+
+.SateOut .printStateOutBtn:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.SateOut .printStateOutBtn .Icone {
+    width: 18px;
+    color: #fff;
 }
 @media screen and (max-width: 650px) {
     .MainPage {
@@ -211,5 +331,17 @@
         margin-top: 20px;
         flex-direction: column;
         gap: 10px;
+    }
+}
+
+/*print css*/
+
+@media print {
+    .ReturnToMain {
+        display: none;
+    }
+
+    .NavBarnoPrinting {
+        display: none;
     }
 }

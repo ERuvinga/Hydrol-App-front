@@ -105,8 +105,9 @@ const monthToString = (month: number) =>{
     return monthString;
 };
 
-const LastMessageTime = (timeOfLastMsg:number)=>{
-    return false; 
+const nowDate = (timeOfLastMsg:number)=>{
+    const dateTime = new Date(timeOfLastMsg);
+    return `${dateTime.getDate()} ${monthToString(dateTime.getMonth())} ${dateTime.getFullYear()}`
 };
 
 const DateReadDatas = (DateNumber: number)=> {
@@ -118,6 +119,6 @@ const DateReadDatas = (DateNumber: number)=> {
 };
 
 export {
-    LastMessageTime,
+    nowDate,
     DateReadDatas,
 }

@@ -1,5 +1,5 @@
 import { IdOfdeletingUser } from '@/States/Users';
-import { Cog6ToothIcon, TrashIcon } from '@heroicons/react/24/outline';
+import { CreditCardIcon, TrashIcon } from '@heroicons/react/24/outline';
 import { useSetRecoilState } from 'recoil';
 
 interface User {
@@ -11,6 +11,8 @@ interface User {
     id_Card: number;
     idUser: string;
     SetConfirmDelete: any;
+    SetMainPage: any;
+    setUserSelected: any;
 }
 
 const CardUsers = (datas: User) => {
@@ -52,8 +54,14 @@ const CardUsers = (datas: User) => {
                 >
                     <TrashIcon className="Icone" />
                 </button>
-                <span className="Btn">
-                    <Cog6ToothIcon className="Icone" />
+                <span
+                    className="Btn"
+                    onClick={() => {
+                        datas.SetMainPage(false);
+                        datas.setUserSelected(datas.id_Card);
+                    }}
+                >
+                    <CreditCardIcon className="Icone" />
                 </span>
             </div>
         </div>
