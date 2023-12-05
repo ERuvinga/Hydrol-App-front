@@ -32,7 +32,7 @@
     width: 100%;
     height: fit-content;
     min-height: 60px;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     background-color: #fff;
